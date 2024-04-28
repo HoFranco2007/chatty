@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import prueba
 
 def encontrar_subetiquetas(elemento, prefijo_padre="", contador_etiquetas=None):
     if contador_etiquetas is None:
@@ -18,12 +19,12 @@ def encontrar_subetiquetas(elemento, prefijo_padre="", contador_etiquetas=None):
             prefijo_actual = f"{clave}_" if prefijo_padre else f"{etiqueta}_{contador_etiquetas[etiqueta]}_"
             encontrar_subetiquetas(sub_elemento, prefijo_padre=prefijo_actual, contador_etiquetas=contador_etiquetas)
 
-with open("extracciontest.html") as test:
-    prueba = test.read()
+#with open("extracciontest.html") as test:
+#   prueba = test.read()
 
 clas_elementos = {}
 
-soup = BeautifulSoup(prueba, 'html.parser')
+soup = BeautifulSoup(prueba.html_content, 'html.parser')
 
 listaSoup = soup.find("body").find_all(recursive=False)  # Encuentra solo los elementos directos dentro del cuerpo
 
