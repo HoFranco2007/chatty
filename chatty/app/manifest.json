@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Chatty",
+  "version": "1.0",
+  "description": "Chatty, The Web Teacher, is an A.I. that basically guides you through the web.",
+  "icons": {
+    "1028": "/Chatty.PNG"
+  },
+  "action": {
+    "default_popup": "page.js"
+  }
+}
