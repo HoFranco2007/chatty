@@ -4,9 +4,9 @@
   "version": "1.0",
   "description": "Chatty, The Web Teacher, is an A.I. that basically guides you through the web.",
   "icons": {
-    "1028": "/Chatty.PNG"
+    "1028": "./public/Chatty.png"
   },
   "action": {
-    "default_popup": "page.js"
+    "default_popup": "./app/page.tsx"
   }
 }
