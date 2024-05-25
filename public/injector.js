@@ -1,14 +1,12 @@
-const injectReactApp = () => {
-  const container = document.createElement('div');
-  container.id = 'nextjs-chatty-container';
-  document.body.appendChild(container);
+const container = document.createElement('div');
+container.id = 'nextjs-sidebar-container';
+document.body.appendChild(container);
 
-  const script = document.createElement('script');
-  script.src = chrome.runtime.getURL('chatty.bundle.js');
-  script.onload = () => {
-    console.log('Next.js chatty loaded');
-  };
-  document.head.appendChild(script);
-};
+const script = document.createElement('script');
+script.src = chrome.runtime.getURL('extension.js');
+document.head.appendChild(script);
 
-injectReactApp();
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = chrome.runtime.getURL('styles/globals.css');
+document.head.appendChild(link)

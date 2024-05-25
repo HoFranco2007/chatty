@@ -24,6 +24,12 @@
       "js": ["injector.js"]
     }
   ],
+  "web_accessible_resources": [
+    {
+      "resources": ["extension.js", "styles/globals.css"],
+      "matches": ["https://*/*", "http://*/*"]
+    }
+  ],
   "icons": {
     "16": "/chatty.png",
     "48": "/chatty.png",

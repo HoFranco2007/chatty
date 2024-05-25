@@ -33,7 +33,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "public/injector.js",
-    "extension_build/types/**/*.ts"
+    "extension_build/types/**/*.ts",
+    "extension/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
