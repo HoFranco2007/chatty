@@ -1,39 +1,45 @@
 {
-    "manifest_version": 3,
-    "name": "Chatty",
-    "version": "1.0",
-    "description": "Chatty, The Web Teacher, is an A.I. that basically guides you through the web.",
-    "permissions": [
-      "activeTab",
-      "storage"
+  "manifest_version": 3,
+  "name": "Chatty",
+  "version": "1.0",
+  "description": "Chatty, The Web Teacher, is an A.I. that basically guides you through the web.",
+  "permissions": [
+    "storage", 
+    "activeTab", 
+    "scripting", 
+    "tabs"], 
+    "host_permissions": [
+      "https://*/*",
+      "http://*/*"
     ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_popup": "index.html",
-      "default_icon": {
-        "16": "/favicon.ico",
-        "48": "/favicon.ico",
-        "128": "/favicon.ico"
-      }
-    },
-    "content_scripts": [
-      {
-        "matches": ["https://*/*", "http://*/*"],
-        "js": ["injector.js"],
-        "css": ["globals.css"]
-      }
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": ["extension.js", "/globals.css"],
-        "matches": ["https://*/*", "http://*/*"]
-      }
-    ],
-    "icons": {
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
       "16": "/favicon.ico",
       "48": "/favicon.ico",
       "128": "/favicon.ico"
     }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["injector.js"],
+      "css": ["globals.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["background.js", "/globals.css"],
+      "matches": ["https://*/*", "http://*/*"]
+    }
+  ],
+  "icons": {
+    "16": "/favicon.ico",
+    "48": "/favicon.ico",
+    "128": "/favicon.ico"
   }
+}

@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "export",
+    output: "standalone",
+    assetPrefix: "./",
+    exportTrailingSlash: true,
 };
 
 export default nextConfig;
