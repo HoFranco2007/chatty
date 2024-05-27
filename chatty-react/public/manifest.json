@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Chatty",
+  "version": "1.0",
+  "description": "Chatty, The Web Teacher, is an A.I. that basically guides you through the web.",
+  "permissions": [
+    "storage", 
+    "activeTab", 
+    "scripting", 
+    "tabs"], 
+    "host_permissions": [
+      "https://*/*",
+      "http://*/*"
+    ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "/chatty.png",
+      "48": "/chatty.png",
+      "128": "/chatty.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*", "http://*/*"],
+      "js": ["injector.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["background.js"],
+      "matches": ["https://*/*", "http://*/*"]
+    }
+  ],
+  "icons": {
+    "16": "/chatty.png",
+    "48": "/chatty.png",
+    "128": "/chatty.png"
+  }
+}
