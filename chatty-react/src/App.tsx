@@ -1,6 +1,6 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import chattyLogo from './assets/chatty.png'
+import ChattyCanvas from '../components/ChattyCanvas'
 
 const aparecerChatty = async () => {
   let [tab] = await chrome.tabs.query({ active: true })
@@ -8,8 +8,8 @@ const aparecerChatty = async () => {
     target: { tabId: tab.id! },
     func: () => {
       const chatty = document.createElement('img')
-      chatty.src = './public/chatty.png'
-      chatty.style.position = 'fixed'
+      chatty.src = chrome.runtime.getURL("/assets/chatty-BqHLDitW.png")
+      chatty.style.position = 'absolute'
       chatty.style.bottom = '0'
       chatty.style.right = '0'
       chatty.style.width = '300px'
@@ -24,25 +24,17 @@ function App() {
   return (
     <>
       <div className='flex flex-row justify-around pl-3 pr-4'>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
         <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={chattyLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>CHATTY</h1>
       <div className="card">
+        <ChattyCanvas />
         <button onClick={aparecerChatty}>
           Aparecer Chatty
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

@@ -1,0 +1,8 @@
+Model Information:
+* title:	lion
+* source:	https://sketchfab.com/3d-models/lion-f17c88b202a544da85b7b2b0222f4ebc
+* author:	avrraj7 (https://sketchfab.com/avrraj7)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
