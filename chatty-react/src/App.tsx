@@ -2,24 +2,6 @@ import './App.css'
 import chattyLogo from './assets/chatty.png'
 import ChattyCanvas from '../components/ChattyCanvas'
 
-const aparecerChatty = async () => {
-  let [tab] = await chrome.tabs.query({ active: true })
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id! },
-    func: () => {
-      const chatty = document.createElement('img')
-      chatty.src = chrome.runtime.getURL("/assets/chatty-BqHLDitW.png")
-      chatty.style.position = 'absolute'
-      chatty.style.bottom = '0'
-      chatty.style.right = '0'
-      chatty.style.width = '300px'
-      chatty.style.height = '300px'
-      chatty.style.zIndex = '9999'
-      document.body.appendChild(chatty)
-    }
-  })
-}
-
 function App() {
   return (
     <>
@@ -31,8 +13,8 @@ function App() {
       <h1>CHATTY</h1>
       <div className="card">
         <ChattyCanvas />
-        <button onClick={aparecerChatty}>
-          Aparecer Chatty
+        <button>
+          Colo Gordo
         </button>
       </div>
     </>
