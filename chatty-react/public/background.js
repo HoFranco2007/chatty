@@ -19,6 +19,7 @@ const checkPosition = () => {
               }
             } else {
               const newChatty = document.createElement('img');
+              newChatty.className = `transition-all duration-300 ease-in-out `
               newChatty.id = 'chatty-img'
               newChatty.src = chrome.runtime.getURL("/chatty.png");
               newChatty.style.position = 'absolute';
