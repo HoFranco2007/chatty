@@ -1,6 +1,6 @@
 import './App.css';
 import chattyLogo from './assets/chatty.png';
-import ChattyCanvas from '../components/ChattyCanvas';
+// import ChattyCanvas from '../components/ChattyCanvas';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -32,9 +32,9 @@ function App() {
       </div>
       <h1>CHATTY</h1>
       <div className="card">
-        <ChattyCanvas />
+        {/* <ChattyCanvas /> */}
         <button onClick={handleChangePosition}>
-          Colo Gordo
+          Mover Chatty
         </button>
       </div>
     </>
