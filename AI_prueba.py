@@ -122,7 +122,7 @@ data = parse_html(html_content)
 # Convertir las etiquetas a enteros
 data['label'] = data['label'].astype('category').cat.codes
 
-# Dividir los datos en conjuntos de entrenamiento y validación
+""" # Dividir los datos en conjuntos de entrenamiento y validación
 train_texts, val_texts, train_labels, val_labels = train_test_split(data['text'], data['label'], test_size=0.4, random_state=42)
 
 # Tokenizar los textos
@@ -176,4 +176,4 @@ trainer.train()
 
 # Guardar el modelo y el tokenizador entrenados
 model.save_pretrained('./web_element_classifier')
-tokenizer.save_pretrained('./web_element_classifier')
+tokenizer.save_pretrained('./web_element_classifier') """
