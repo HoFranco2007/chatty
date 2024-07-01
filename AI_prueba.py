@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
-librerias = ['beautifulsoup4', 'torch', 'transformers', 'scikit-learn', 'lxml', 'transformers[torch] accelerate -Ufff', 'accelerate>={ACCELERATE_MIN_VERSION}']
+""" librerias = ['beautifulsoup4', 'torch', 'transformers', 'scikit-learn', 'lxml', 'transformers[torch] accelerate -Ufff', 'google.generativeai']
 for libreria in librerias:
     try:
         subprocess.check_call(['pip', 'install', libreria])
@@ -15,7 +15,7 @@ for libreria in librerias:
         print(f"Error al instalar la librería {libreria}.")
         
         # Deshabilitar las advertencias de solicitud HTTP insegura
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning) """
 
 from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
 from transformers import pipeline
@@ -46,7 +46,7 @@ html_content = get_html_from_url(url)
 # Verificar si se obtuvo el HTML correctamente
 if html_content:
     print("Contenido HTML obtenido correctamente:")
-    print(html_content)
+    
 else:
     print("No se pudo obtener el HTML de la página.")
     

@@ -10,9 +10,17 @@ data_content = iA.data
 # Assuming 'data_content' is a DataFrame and you want to convert it to a list of strings
 content_list = data_content.astype(str).values.flatten().tolist()
 
-texto = "Como inicio sesion en github?"
+index = 1
+textoref = "usando el codigo html proporcionado antes"
+textodef = "pasar solamente el paso numero 1 ya estando en la pagina para saber "
+texto = "como accedo a la informacion de alberto sileoni en esta pagina"
 
-inputContent = [item + texto for item in content_list]
+textodef = textoref + textodef + texto
+
+print(textodef)
+
+inputContent = [item + textodef for item in content_list]
+
 
 # Crear el modelo generativo
 model = genai.GenerativeModel('gemini-1.5-flash')
