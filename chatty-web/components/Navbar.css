@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#nav-list li{
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#nav-list span{
+  position: absolute;
+  top: 30%;
+  width: 80px;
+  height: 40%;
+  background: #272727;
+  border-radius: 9999px;
+  transition: .5s;
+}

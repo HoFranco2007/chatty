@@ -1,10 +1,12 @@
-import Image from "next/image";
 import Navbar from "../components/Navbar"
 
 export default function Home() {
   return (
     <body>
-      <Navbar/>
+      <Navbar
+        isOpen={false}
+        page={"Home"}
+      />
     </body>
   );
 }
