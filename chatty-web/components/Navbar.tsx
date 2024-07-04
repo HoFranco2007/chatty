@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import DeployableMenu from "./DeployableMenu";
+import DeployableMenu from "./deployable-menu";
 import "./Navbar.css";
 
 const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
@@ -71,40 +71,47 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
             </div>
           </section>
         ) : (
-          <header className={`fixed flex flex-row items-center justify-around w-full mb-32 ${ scrolled ? "bg-black border-b border-b-white transition-all duration-1000 shadow-4xl" : "bg-black transition-all duration-1000 border-b-0 border-b-white/0"}`}>
+          <header className={`fixed flex flex-row items-center justify-around w-full mb-32 ${ scrolled ? "bg-none border-b border-b-white transition-all duration-1000 shadow-4xl" : "bg-black transition-all duration-1000 border-b-0 border-b-white/0"}`}>
             <nav className="flex flex-row items-center justify-around w-full ">
               <p className="navbar-brand d-flex items-center text-white" >
                   <img src="/logo.png" alt="logo" className="p-4 w-20" />
               </p>
-              <DeployableMenu/>
               <ul className="list-none flex flex-row items-center" id="nav-list">
-              {Array.from({ length: 6 }, (_, index) => (
+              {Array.from({ length: 4 }, (_, index) => (
                 <li
                   key={index}
-                  className={` text-white/70 text-base cursor-pointer px-7 py-6${
+                  className={` text-white/70 text-sm cursor-pointer px-7 py-6${
                     hoveredIndex === index ? 'text-white/70 hover:text-white' : ''
                   }`}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  {index === 0 ? 'Home' : index === 1 ? 'Best Sellers' : index === 2 ? 'Cuidado Corporal' : index === 3 ? 'Cuidado Facial' : index === 4 ? 'Cuidado Capilar' : index === 5 ? 'Cuidado de Manos' : ``}
+                  {index === 0 ? 'Home' : index === 1 ? 'Best Sellers' : index === 2 ? 'Services' : index === 3 ? 'Contact Us' : ""}
                 </li>
               ))}
-              {hoveredIndex !== null && <span
-                className="transition-all duration-200"
-                style={{
-                  transform: `translateX(${hoveredIndex === 0 ? '10px' : hoveredIndex === 1 ? '110px' : hoveredIndex === 2 ? '250px' : hoveredIndex === 3 ? '425px' : hoveredIndex === 4 ? '585px' : hoveredIndex === 5 ? '755px' : '0'})`,
-                  transition: '0.4s ease', 
-                  display: 'inline-block', 
-                  position: 'absolute',
-                  width: `${hoveredIndex === 0 ? '80px' : hoveredIndex === 1 ? '110px' : hoveredIndex === 2 ? '150px' : hoveredIndex === 3 ? '140px' : hoveredIndex === 4 ? '145px' : hoveredIndex === 5 ? '160px' : '0'}`
-                }}
-              ></span>}
+              <li
+                onMouseEnter={() => handleMouseEnter(4)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <DeployableMenu />
+              </li>
+              {hoveredIndex !== null && (
+                <span
+                  className="transition-all duration-200"
+                  style={{
+                    transform: `translateX(${hoveredIndex === 0 ? '7px' : hoveredIndex === 1 ? '108px' : hoveredIndex === 2 ? '243px' : hoveredIndex === 3 ? '360px' : hoveredIndex === 4 ? '480px' : ""})`,
+                    transition: '0.3s ease', 
+                    display: 'inline-block', 
+                    position: 'absolute',
+                    width: `${hoveredIndex === 0 ? '80px' : hoveredIndex === 1 ? '110px' : hoveredIndex === 2 ? '90px' : hoveredIndex === 3 ? '100px' : hoveredIndex === 4 ? '135px' : '0'}`
+                  }}
+              ></span>  
+            )}
             </ul>
               <div>
                 <ul className="flex flex-row items-center">
-                  <li className="mr-4 xl:mr-2"><p className="text-black font-semibold text-base px-4 py-2 bg-white/90 rounded-md cursor-pointer hover:bg-white"> Contactanos </p></li>
-                  <li className="ml-4 xl:ml-2"><p className="text-white/70 font-semibold text-base px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#202020]"> Nosotros </p></li>
+                  <li className="mr-4 xl:mr-2"><p className="text-black font-semibold text-sm px-4 py-2 bg-white/90 rounded-md cursor-pointer hover:bg-white"> Sign Up </p></li>
+                  <li className="ml-4 xl:ml-2"><p className="text-white/70 font-semibold text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#202020]"> Log In </p></li>
                 </ul>
               </div>
             </nav>
