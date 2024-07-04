@@ -44,7 +44,7 @@ html_content = get_html_from_url(url)
 
 # Verificar si se obtuvo el HTML correctamente
 if html_content:
-    print("Contenido HTML obtenido correctamente:")
+    pass
     
 else:
     print("No se pudo obtener el HTML de la página.")
