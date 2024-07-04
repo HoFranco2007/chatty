@@ -74,7 +74,7 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
           <header className={`fixed flex flex-row items-center justify-around w-full mb-32 ${ scrolled ? "bg-none border-b border-b-white transition-all duration-1000 shadow-4xl" : "bg-black transition-all duration-1000 border-b-0 border-b-white/0"}`}>
             <nav className="flex flex-row items-center justify-around w-full ">
               <p className="navbar-brand d-flex items-center text-white" >
-                  <img src="/logo.png" alt="logo" className="p-4 w-20" />
+                  <img src="/chatty.png" alt="logo" className="p-4 w-20" />
               </p>
               <ul className="list-none flex flex-row items-center" id="nav-list">
               {Array.from({ length: 4 }, (_, index) => (

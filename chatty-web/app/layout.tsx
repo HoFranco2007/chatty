@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-[100vh] w-[100vw] bg-gradient-to-r from-gray-600 via-[5B0662] to-[85F900] overflow-hidden">
-      <body className="h-[100vh] w-[100vw] bg-gradient-to-r from-gray-600 via-[5B0662] to-[85F900] overflow-hidden">{children}</body>
+      <body className="">{children}</body>
     </html>
   );
 }
