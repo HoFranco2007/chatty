@@ -3,11 +3,31 @@
 import { useState, useEffect } from "react";
 import DeployableMenu from "./deployable-menu";
 import "./Navbar.css";
+import { supabase } from "../components/supabase/serverClient";
+import { AuthButtonServer } from "../components/supabase/auth-button-server";
+import { supabaseClient } from "../components/supabase/clientClient";
+import { type Session } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
 
 const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
   const [scrolled, setScrolled] = useState(false);
   const [smallScreen, setSmallScreen] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(0);
+
+  const router = useRouter()
+
+  const handleSignInGoogle = async () => {
+    await supabaseClient.auth.signInWithOAuth({
+        provider:"google",
+        options: {
+            redirectTo: "http://localhost:3000/auth/callback"
+        }
+    })
+  }
+  const handelSignOut = async () => {
+      await supabaseClient.auth.signOut()
+      router.refresh()
+  }
 
   const handleMouseEnter = (index : number) => {
     setHoveredIndex(index);
@@ -110,8 +130,8 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
             </ul>
               <div>
                 <ul className="flex flex-row items-center">
-                  <li className="mr-4 xl:mr-2"><p className="text-black font-semibold text-sm px-4 py-2 bg-white/90 rounded-md cursor-pointer hover:bg-white"> Sign Up </p></li>
-                  <li className="ml-4 xl:ml-2"><p className="text-white/70 font-semibold text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#202020]"> Log In </p></li>
+                  <li className="mr-4 xl:mr-2" onClick={handleSignInGoogle}><p className="text-black font-semibold text-sm px-4 py-2 bg-white/90 rounded-md cursor-pointer hover:bg-white"> Sign Up </p></li>
+                  <li className="ml-4 xl:ml-2" onClick={handleSignInGoogle}><p className="text-white/70 font-semibold text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#202020]"> Log In </p></li>
                 </ul>
               </div>
             </nav>

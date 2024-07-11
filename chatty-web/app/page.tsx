@@ -1,8 +1,16 @@
-import Navbar from "../components/navbar";
+"use client"
+
+import Navbar from "../components/Navbar";
 import "./globals.css";
 import Image from "next/image";
+import { supabaseClient } from "../components/supabase/clientClient";
 
-export default function Home() {
+export default async function Home() {
+
+  const {data: user} = await supabaseClient.auth.getUser()
+  const name = user.user?.user_metadata.full_name
+  const email = user.user?.email
+
   return (
     <section className="h-[100vh] w-[100vw] bg-gradient-to-r from-slate-950 from-45% via-[#5B0662] via-70% to-[#85F900] overflow-hidden">
       <Navbar isOpen={false} page={"Home"} />
