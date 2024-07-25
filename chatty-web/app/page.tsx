@@ -7,7 +7,7 @@ import Image from "next/image";
 export default async function Home() {
 
   return (
-    <section className="h-[100vh] w-[100vw] bg-gradient-to-r from-slate-950 from-45% via-[#5B0662] via-70% to-[#85F900] overflow-hidden">
+    <section className="h-[100vh] w-[100vw] bg-gradient-to-r from-black from-55% via-[#5B0662] via-75% to-[#85F900] overflow-hidden">
       <Navbar isOpen={false} page={"Home"} />
         <div className="flex flex-row justify-around">
           <div className="flex flex-col justify-around">
@@ -17,18 +17,18 @@ export default async function Home() {
               </span>
               <p className="flex items-baseline text-[8.5vw] font-extrabold text-[#85F900] h-[10vw]">CHATTY</p>
               <p className="flex ml-2 items-end text-[4vw] font-bold mt-4 h-[5vw] bg-gradient-to-r from-[#5B0662] to-[#F580F1] text-transparent bg-clip-text">THE WEB HELPER</p>
+              <div>
+                <p className="text-[1.3vw] font-bold text-[#CCCCCC] w-[35vw] mt-[3vw] ml-[1vw]">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, amet atque, molestias dolorem commodi culpa voluptate quasi voluptatem
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-[1.2vw] font-bold text-[#CCCCCC] w-[35vw]">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, amet atque, molestias dolorem commodi culpa voluptate quasi voluptatem alias delectus aliquam explicabo veritatis possimus quos illo, quae odit sint officia?
-              </p>
-            </div>
-            <div>
-              <button>ADD TO CHROME</button>
+            <div className="flex items-center">
+              <button className="bg-gradient-to-r from-[#85F900] to-[#85F900]/70 p-[1vw] text-[1.3vw] text-black font-extrabold rounded-3xl mt-[3vw] ml-[1vw]">ADD TO CHROME</button>
             </div>
           </div>
           <div>
-            <Image src={"/chatty.png"} alt="chatty" height={500} width={250} />
+            <Image src={"/chatty.png"} alt="chatty" height={500} width={500} />
           </div>
         </div>
     </section>

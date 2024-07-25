@@ -23,13 +23,13 @@ const DeployableMenu = () => {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md p-6 no-underline outline-none transition-all duration-500 hover:shadow-lg hover:bg-slate-100 focus:shadow-md"
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-semibold">
                       shadcn/ui
                     </div>
-                    <p className="text-sm leading-tight text-muted-foreground text-zinc-500">
+                    <p className="text-sm leading-tight text-muted-foreground text-zinc-500 ">
                       Beautifully designed components that you can copy and
                       paste into your apps. Accessible. Customizable. Open
                       Source.
@@ -56,7 +56,7 @@ const DeployableMenu = () => {
 
 const ListItem = ({href, title, children} : {href : string, title : string, children : string}) => {
   return (
-    <li>
+    <li className="transition-all duration-500 hover:shadow-lg hover:bg-slate-100 focus:shadow-md p-3 rounded-md">
       <Link href={href}>
         <h1 className="text-base font-medium">{title}</h1>
         <p className="text-zinc-500 text-xs">{children}</p>

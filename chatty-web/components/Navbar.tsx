@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import DeployableMenu from "./deployable-menu";
+import NavigationMenuTrigger from "./deployable-menu"
 import "./Navbar.css";
 import { supabase } from "../components/supabase/serverClient";
 import { AuthButtonServer } from "../components/supabase/auth-button-server";
@@ -100,7 +101,7 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
               {Array.from({ length: 4 }, (_, index) => (
                 <li
                   key={index}
-                  className={` text-white/70 text-sm cursor-pointer px-7 py-6${
+                  className={` text-white/70 text-sm cursor-pointer px-8 py-6${
                     hoveredIndex === index ? 'text-white/70 hover:text-white' : ''
                   }`}
                   onMouseEnter={() => handleMouseEnter(index)}
@@ -119,7 +120,7 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
                 <span
                   className="transition-all duration-200"
                   style={{
-                    transform: `translateX(${hoveredIndex === 0 ? '7px' : hoveredIndex === 1 ? '108px' : hoveredIndex === 2 ? '243px' : hoveredIndex === 3 ? '360px' : hoveredIndex === 4 ? '480px' : ""})`,
+                    transform: `translateX(${hoveredIndex === 0 ? '0.6vw' : hoveredIndex === 1 ? '6.2vw' : hoveredIndex === 2 ? '13.4vw' : hoveredIndex === 3 ? '19.7vw' : hoveredIndex === 4 ? '26vw' : ""})`,
                     transition: '0.3s ease', 
                     display: 'inline-block', 
                     position: 'absolute',

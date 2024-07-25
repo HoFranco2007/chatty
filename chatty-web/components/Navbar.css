@@ -9,10 +9,9 @@
 }
 
 #nav-list span{
-  position: absolute;
-  top: 30%;
+  top: 32%;
   width: 80px;
-  height: 40%;
+  height: 35%;
   background: #272727;
   border-radius: 9999px;
   transition: .5s;
