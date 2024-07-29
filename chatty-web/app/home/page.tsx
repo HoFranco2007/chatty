@@ -3,6 +3,8 @@ import { AuthButtonServer } from "../../components/supabase/auth-button-server";
 import { supabase } from '@/components/supabase/serverClient';
 import { type Session } from "@supabase/supabase-js";
 import { redirect } from 'next/navigation'
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { cookies } from "next/headers";
 
 export default async function Home() {
     const {data: { user }} = await supabase.auth.getUser()

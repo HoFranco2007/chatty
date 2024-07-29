@@ -120,7 +120,7 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
                 <span
                   className="transition-all duration-200"
                   style={{
-                    transform: `translateX(${hoveredIndex === 0 ? '0.6vw' : hoveredIndex === 1 ? '6.2vw' : hoveredIndex === 2 ? '13.4vw' : hoveredIndex === 3 ? '19.7vw' : hoveredIndex === 4 ? '26vw' : ""})`,
+                    transform: `translateX(${hoveredIndex === 0 ? '0.6vw' : hoveredIndex === 1 ? '6vw' : hoveredIndex === 2 ? '13vw' : hoveredIndex === 3 ? '19vw' : hoveredIndex === 4 ? '25vw' : ""})`,
                     transition: '0.3s ease', 
                     display: 'inline-block', 
                     position: 'absolute',
