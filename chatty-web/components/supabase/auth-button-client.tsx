@@ -21,7 +21,7 @@ export function AuthButton({session}: {session: Session | null} ){
     }
     const handelSignOut = async () => {
         await supabaseClient.auth.signOut()
-        router.refresh()
+        router.push("/")
     }
     return(
         <header>
