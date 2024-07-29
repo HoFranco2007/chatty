@@ -18,8 +18,8 @@ const DeployableMenu = () => {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
-          <NavigationMenuContent className="bg-black border-neutral-800">
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] text-[#CCCCCC]">
+          <NavigationMenuContent className="bg-black border-neutral-800 absolute z-20">
+            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] text-[#CCCCCC] relative">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
