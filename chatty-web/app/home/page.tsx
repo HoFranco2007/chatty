@@ -4,26 +4,25 @@ import { supabase } from '@/components/supabase/serverClient';
 import { type Session } from "@supabase/supabase-js";
 import { redirect } from 'next/navigation'
 
-export default async function Home({session}: {session: Session | null}) {
+export default async function Home() {
+    const {data: { user }} = await supabase.auth.getUser()
+    const name = user?.user_metadata?.full_name || 'Guest';
+    const email = user?.email || 'No email provided';
 
-    const {data: user} = await supabase.auth.getUser()
-    const name = user.user?.user_metadata.full_name
-    const email = user.user?.email
+    if (!user) {
+        redirect('http://localhost:3000/');
+        return null;
+    }
 
   return (
     <>
-        {session === null ? (
-            redirect('http://localhost:3000/')
-        ) : (
-            <div className='h-full w-full flex align-center justify-center flex-col p-6'>
-                <AuthButtonServer />
-                <div>
-                    <h1 className='text-3xl font-bold text-black'>Welcome {name}</h1>
-                    <p className='text-black'>Your email is {email}</p>
-                </div>
+        <div className='h-full w-full flex align-center justify-center flex-col p-6'>
+            <AuthButtonServer />
+            <div>
+                <h1 className='text-3xl font-bold text-black'>Welcome {name}</h1>
+                <p className='text-black'>Your email is {email}</p>
             </div>
-            ) 
-        }
+        </div>
     </>
   )
 }
