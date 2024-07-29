@@ -7,7 +7,7 @@ import Image from "next/image";
 export default async function Home() {
 
   return (
-    <section className="h-[100vh] w-[100vw] bg-gradient-to-r from-black from-55% via-[#5B0662] via-75% to-[#85F900] overflow-hidden">
+    <section className="h-[100vh] w-[100vw] bg-gradient-to-l from-black via-[#5B0662] via-20% to-black overflow-hidden">
       <Navbar isOpen={false} page={"Home"} />
         <div className="flex flex-row justify-around">
           <div className="flex flex-col justify-around">
@@ -23,7 +23,7 @@ export default async function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center ">
               <button className="bg-gradient-to-r from-[#85F900] to-[#85F900]/70 p-[1vw] text-[1.3vw] text-black font-extrabold rounded-3xl mt-[3vw] ml-[1vw]">ADD TO CHROME</button>
             </div>
           </div>

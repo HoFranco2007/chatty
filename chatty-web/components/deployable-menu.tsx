@@ -18,12 +18,12 @@ const DeployableMenu = () => {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+          <NavigationMenuContent className="bg-black border-neutral-800">
+            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] text-[#CCCCCC]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md p-6 no-underline outline-none transition-all duration-500 hover:shadow-lg hover:bg-slate-100 focus:shadow-md"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md p-6 no-underline outline-none transition-all duration-500 hover:shadow-lg hover:bg-neutral-800 focus:shadow-md"
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-semibold">
@@ -56,7 +56,7 @@ const DeployableMenu = () => {
 
 const ListItem = ({href, title, children} : {href : string, title : string, children : string}) => {
   return (
-    <li className="transition-all duration-500 hover:shadow-lg hover:bg-slate-100 focus:shadow-md p-3 rounded-md">
+    <li className="transition-all duration-500 hover:shadow-lg hover:bg-neutral-800 focus:shadow-md p-3 rounded-md">
       <Link href={href}>
         <h1 className="text-base font-medium">{title}</h1>
         <p className="text-zinc-500 text-xs">{children}</p>
