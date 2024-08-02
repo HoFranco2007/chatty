@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-[100vh] w-[100vw] bg-gradient-to-r from-gray-600 via-[5B0662] to-[85F900] overflow-hidden">
+    <html lang="en" className="">
       <body className="">{children}</body>
     </html>
   );

@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
   const [scrolled, setScrolled] = useState(false);
   const [smallScreen, setSmallScreen] = useState();
-  const [hoveredIndex, setHoveredIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(5);
 
   const router = useRouter()
 
@@ -35,25 +35,28 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
   };
 
   const handleMouseLeave = () => {
-    setHoveredIndex(0);
+    setHoveredIndex(5);
   };
   return (
     <main className="top-0 overflow-hidden pb-36">
           <header className={`fixed flex flex-row items-center justify-around w-full mb-32 ${ scrolled ? "bg-none border-b border-b-white transition-all duration-1000 shadow-4xl" : " transition-all duration-1000 border-b-0 border-b-white/0"}`}>
             <nav className="flex flex-row items-center justify-between w-full px-8">
-              <ul className="list-none flex flex-row items-center" id="nav-list">
-              {Array.from({ length: 4 }, (_, index) => (
-                <li
-                  key={index}
-                  className={` text-white/70 text-sm cursor-pointer px-8 py-6${
-                    hoveredIndex === index ? 'text-white/70 hover:text-white' : ''
-                  }`}
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {index === 0 ? 'Home' : index === 1 ? 'Best Sellers' : index === 2 ? 'Services' : index === 3 ? 'Contact Us' : ""}
-                </li>
-              ))}
+              <ul className="list-none flex flex-row items-center mt-2" id="nav-list">
+                <div className="">
+                  <img src="/chatty-head.png" alt="logo" className="w-18 h-14 p-1 mr-2" />
+                </div>
+                {Array.from({ length: 4 }, (_, index) => (
+                  <li
+                    key={index}
+                    className={` text-white/70 text-sm cursor-pointer px-8 py-6${
+                      hoveredIndex === index ? 'text-white/70 hover:text-white' : ''
+                    }`}
+                    onMouseEnter={() => handleMouseEnter(index)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {index === 0 ? 'Home' : index === 1 ? 'Best Sellers' : index === 2 ? 'Services' : index === 3 ? 'Contact Us' : ""}
+                  </li>
+                ))}
               <li
                 onMouseEnter={() => handleMouseEnter(4)}
                 onMouseLeave={handleMouseLeave}
@@ -62,13 +65,13 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
               </li>
               {hoveredIndex !== null && (
                 <span
-                  className="transition-all duration-200"
+                  className="transition-all duration-200 mt-1"
                   style={{
-                    transform: `translateX(${hoveredIndex === 0 ? '0.6vw' : hoveredIndex === 1 ? '6vw' : hoveredIndex === 2 ? '13vw' : hoveredIndex === 3 ? '19vw' : hoveredIndex === 4 ? '25vw' : ""})`,
+                    transform: `translateX(${hoveredIndex === 0 ? '5.1vw' : hoveredIndex === 1 ? '10.4vw' : hoveredIndex === 2 ? '17.4vw' : hoveredIndex === 3 ? '23.5vw' : hoveredIndex === 4 ? '29.6vw' : hoveredIndex == 5 ? '5.1vw' : ""})`,
                     transition: '0.3s ease', 
                     display: 'inline-block', 
                     position: 'absolute',
-                    width: `${hoveredIndex === 0 ? '80px' : hoveredIndex === 1 ? '110px' : hoveredIndex === 2 ? '90px' : hoveredIndex === 3 ? '100px' : hoveredIndex === 4 ? '135px' : '0'}`
+                    width: `${hoveredIndex === 0 ? '80px' : hoveredIndex === 1 ? '110px' : hoveredIndex === 2 ? '90px' : hoveredIndex === 3 ? '100px' : hoveredIndex === 4 ? '135px' : hoveredIndex === 5 ? '0px' : ""}`,
                   }}
               ></span>  
             )}
