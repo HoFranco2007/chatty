@@ -38,7 +38,7 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
     setHoveredIndex(5);
   };
   return (
-    <main className="top-0 overflow-hidden pb-36">
+    <main className="top-0 overflow-hidden pb-[4vw]">
           <header className={`fixed flex flex-row items-center justify-around w-full mb-32 ${ scrolled ? "bg-none border-b border-b-white transition-all duration-1000 shadow-4xl" : " transition-all duration-1000 border-b-0 border-b-white/0"}`}>
             <nav className="flex flex-row items-center justify-between w-full px-8">
               <ul className="list-none flex flex-row items-center mt-2" id="nav-list">
@@ -48,13 +48,13 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
                 {Array.from({ length: 4 }, (_, index) => (
                   <li
                     key={index}
-                    className={` text-white/70 text-sm cursor-pointer px-8 py-6${
+                    className={` text-white/70 text-sm cursor-pointer px-[1.5vw] py-[2vh]${
                       hoveredIndex === index ? 'text-white/70 hover:text-white' : ''
                     }`}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    {index === 0 ? 'Home' : index === 1 ? 'Best Sellers' : index === 2 ? 'Services' : index === 3 ? 'Contact Us' : ""}
+                    {index === 0 ? 'Home' : index === 1 ? 'Products' : index === 2 ? 'Service' : index === 3 ? 'Contact Us' : ""}
                   </li>
                 ))}
               <li
@@ -67,11 +67,11 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
                 <span
                   className="transition-all duration-200 mt-1"
                   style={{
-                    transform: `translateX(${hoveredIndex === 0 ? '5.1vw' : hoveredIndex === 1 ? '10.4vw' : hoveredIndex === 2 ? '17.4vw' : hoveredIndex === 3 ? '23.5vw' : hoveredIndex === 4 ? '29.6vw' : hoveredIndex == 5 ? '5.1vw' : ""})`,
+                    transform: `translateX(${hoveredIndex === 0 ? '5.3vw' : hoveredIndex === 1 ? '10.3vw' : hoveredIndex === 2 ? '16.2vw' : hoveredIndex === 3 ? '21.6vw' : hoveredIndex === 4 ? '27.6vw' : hoveredIndex == 5 ? '5.3vw' : ""})`,
                     transition: '0.3s ease', 
                     display: 'inline-block', 
                     position: 'absolute',
-                    width: `${hoveredIndex === 0 ? '80px' : hoveredIndex === 1 ? '110px' : hoveredIndex === 2 ? '90px' : hoveredIndex === 3 ? '100px' : hoveredIndex === 4 ? '135px' : hoveredIndex === 5 ? '0px' : ""}`,
+                    width: `${hoveredIndex === 0 ? '70px' : hoveredIndex === 1 ? '90px' : hoveredIndex === 2 ? '80px' : hoveredIndex === 3 ? '105px' : hoveredIndex === 4 ? '140px' : hoveredIndex === 5 ? '0px' : ""}`,
                   }}
               ></span>  
             )}
