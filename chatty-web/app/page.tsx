@@ -33,7 +33,7 @@ export default async function Home() {
               </div>
             </div>
             <div>
-              <img src={"/chatty.png"} alt="chatty" className="h-[45vw] w-[35vw] mr-[2vw] ml-[2vw] "></img>
+              <img src={"/chatty.png"} alt="chatty" className="h-[35vw] w-[28vw] mr-[2vw] ml-[2vw] mt-[0.7vw]"></img>
             </div>
           </div>
       </section>
