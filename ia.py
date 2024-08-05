@@ -13,7 +13,7 @@ content_list = data_content.astype(str).values.flatten().tolist()
 def respuesta(inputUsu: str):
 
     textoref = "usando el codigo html proporcionado antes"
-    textodef = "pasar solamente el paso numero 1 ya estando en la pagina para saber ESPECIFICAMENTE EL SELECTOR UNICO QUE DIFERENCIE AL OBJETO, colocar al selector entre parentesis"
+    textodef = "pasar solamente el paso numero 1 ya estando en la pagina para saber ESPECIFICAMENTE DENTRO DEL DICCIONARIO QUE TE PASE, colocar al selector entre parentesis"
     textodef = textoref + textodef + inputUsu
     inputContent = [item + textodef for item in content_list]
 

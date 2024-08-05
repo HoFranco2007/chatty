@@ -37,7 +37,7 @@ def get_html_from_url(url):
     return None
 
 # URL de la página web a la que deseas acceder
-url = "https://github.com/"
+url = "https://github.com"
 
 # Obtener el HTML de la página web
 html_content = get_html_from_url(url)
