@@ -2,7 +2,6 @@ import Navbar from "../components/Navbar";
 import "./globals.css";
 import Image from "next/image";
 
-
 export default async function Home() {
   return (
     <body className="">
