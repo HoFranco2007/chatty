@@ -20,7 +20,7 @@ export default async function Home() {
                   </h1>
                 </div>
                 <div className="">
-                  <h1 className="text-[2.5vw] font-semibold text-[#700079] ml-[1vw] drop-shadow-[0_1px_4px_rgba(112,0,121,1)]">
+                  <h1 className="text-[2.5vw] font-medium text-[#700079] ml-[1vw] drop-shadow-[0_1px_10px_rgba(197,1,226,0.9)]">
                     First and unique web helper
                   </h1>
                 </div>
@@ -28,12 +28,12 @@ export default async function Home() {
               <div>
                 <div className="flex flex-row">
                   <p className="text-[1.5vw]"><span className=" text-[#85F900] ml-[1vw] drop-shadow-[0_1px_2.5px_rgba(133,249,0,1)]">Everything</span><span className="text-[#CCCCCC]"> in a simple extension</span><span className="text-[#CCCCCC]"> - </span></p>
-                  <button className="flex flex-row text text-[#CCCCCC] text-[1.4vw] drop-shadow-[0_1px_2.5px_rgba(255,255,255,1)] ml-[0.5vw] px-[0.5vw] py-[0.2vw] border border-[#F580F1] rounded-lg hover:border-white transition-colors duration-500">Add to chrome<img src="/chrome.png" className="ml-[0.5vw]" /></button>
+                  <button className="flex flex-row ml-[0.5vw] px-[0.5vw] py-[0.2vw] border border-[#F580F1] rounded-lg hover:border-white transition-colors duration-500"><p className="text-[#CCCCCC] text-[1.4vw] drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">Add to chrome</p><img src="/chrome.png" className="ml-[0.5vw]" /></button>
                 </div>
               </div>
             </div>
             <div>
-              <img src={"/chatty.png"} alt="chatty" className="h-[45vw] w-[35vw] mr-[2vw] ml-[2vw] "></img>
+              <img src={"/chatty.png"} alt="chatty" className="h-[40vw] w-[30vw] mr-[2vw] ml-[2vw] "></img>
             </div>
           </div>
       </section>

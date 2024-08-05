@@ -67,7 +67,7 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
                 <span
                   className="transition-all duration-200 mt-1"
                   style={{
-                    transform: `translateX(${hoveredIndex === 0 ? '5.3vw' : hoveredIndex === 1 ? '10.3vw' : hoveredIndex === 2 ? '16.2vw' : hoveredIndex === 3 ? '21.6vw' : hoveredIndex === 4 ? '27.6vw' : hoveredIndex == 5 ? '5.3vw' : ""})`,
+                    transform: `translateX(${hoveredIndex === 0 ? '5.3vw' : hoveredIndex === 1 ? '10.2vw' : hoveredIndex === 2 ? '16.2vw' : hoveredIndex === 3 ? '21.6vw' : hoveredIndex === 4 ? '27.7vw' : hoveredIndex == 5 ? '5.3vw' : ""})`,
                     transition: '0.3s ease', 
                     display: 'inline-block', 
                     position: 'absolute',
@@ -78,8 +78,8 @@ const Navbar = ({isOpen, page} : {isOpen : boolean; page : string}) => {
             </ul>
               <div>
                 <ul className="flex flex-row items-center">
-                  <li className="mr-4 xl:mr-2" onClick={handleSignInGoogle}><p className="text-black font-semibold text-sm px-4 py-2 bg-white/90 rounded-md cursor-pointer hover:bg-white"> Sign Up </p></li>
-                  <li className="ml-4 xl:ml-2" onClick={handleSignInGoogle}><p className="text-white/70 font-semibold text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#202020]"> Log In </p></li>
+                  <li className="mr-4 xl:mr-2" onClick={handleSignInGoogle}><p className="text-black transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#CCCCCC] rounded-md cursor-pointer hover:bg-white"> Sign Up </p></li>
+                  <li className="ml-4 xl:ml-2" onClick={handleSignInGoogle}><p className="text-white/70 transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#3C3C3C]/70"> Log In </p></li>
                 </ul>
               </div>
             </nav>

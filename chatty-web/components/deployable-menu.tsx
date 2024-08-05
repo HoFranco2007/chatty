@@ -27,21 +27,19 @@ const DeployableMenu = () => {
                     href="/"
                   >
                     <div className="mb-2 mt-4 text-lg font-semibold">
-                      shadcn/ui
+                      Add to Chrome
                     </div>
-                    <p className="text-sm leading-tight text-muted-foreground text-zinc-500 ">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
+                    <p className="text-sm leading-tight text-muted-foreground text-zinc-500 text-center">
+                      Add Chatty to your chrome extension and start using it right now.
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
+                How to use Chatty correctly.
               </ListItem>
               <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
+                How to install Chatty to your Computer.
               </ListItem>
               <ListItem href="/docs/primitives/typography" title="Typography">
                 Styles for headings, paragraphs, lists...etc
