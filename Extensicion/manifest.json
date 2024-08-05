@@ -3,7 +3,7 @@
   "name": "Text Highlighter",
   "version": "1.0",
   "description": "Highlight text on the current page.",
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "http://localhost:3000/*"],
   "background": {
     "service_worker": "background.js"
   },
@@ -17,3 +17,4 @@
     }
   ]
 }
+s
