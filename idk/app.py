@@ -9,7 +9,7 @@ def index():
 
 @app.route('/get-string')
 def get_string():
-    my_string = "Colorado puto"
+    my_string = "Variable python"
     return jsonify({'my_string': my_string})
 
 if __name__ == '__main__':
