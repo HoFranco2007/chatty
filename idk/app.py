@@ -2,6 +2,8 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
+import ia as i
+
 # Variable global para almacenar el texto enviado
 user_text = ""
 
@@ -19,7 +21,12 @@ def send_string():
     global user_text
     data = request.get_json()
     user_text = data.get('text', '')
-    return jsonify({'received_text': user_text})
+
+    # Modificar el texto usando la función respuesta
+    modified_text = i.respuesta(user_text)
+
+    # Devolver la respuesta completa
+    return jsonify({'received_text': modified_text})
 
 if __name__ == '__main__':
     app.run(debug=True)
