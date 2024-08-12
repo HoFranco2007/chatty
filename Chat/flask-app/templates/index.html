@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask + JavaScript</title>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <h1>Hello, Flask with JavaScript!</h1>
+    <form id="textForm">
+        <input type="text" id="userInput" placeholder="Escribe algo" required>
+        <button type="submit">Enviar</button>
+    </form>
+    <p id="message"></p>
+</body>
+</html>
