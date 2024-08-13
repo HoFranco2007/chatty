@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger
-} from "@/components/ui/navigation-menu"
+} from "@/components/navbar/ui/navigation-menu"
 import "./Navbar.css";
 
 const DeployableMenu = () => {
@@ -18,9 +18,9 @@ const DeployableMenu = () => {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
-          <NavigationMenuContent className="bg-black border-neutral-800 absolute z-20">
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] text-[#CCCCCC] relative">
-              <li className="row-span-3">
+          <NavigationMenuContent className="absolute bg-black border-neutral-800">
+            <ul className="grid gap-3 p-[1.23rem] lg:h-[200px] md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] text-[#CCCCCC] relative">
+              <li className="row-span-2">
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md p-6 no-underline outline-none transition-all duration-500 hover:shadow-lg hover:bg-neutral-800 focus:shadow-md"
