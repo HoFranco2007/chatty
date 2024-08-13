@@ -7,7 +7,7 @@ export default async function Home() {
       <section className="absolute">
         <img src="/bg.png" alt="" className="relative h-[45vh] w-[100vw]"/>
       </section>
-      <main className="bg-black h-[100vh] w-[100vw] grid-background">
+      <main className="bg-black grid-background h-[300vh]">
         <Navbar 
           isOpen = {false} 
           page = {"Home"} 
@@ -29,7 +29,7 @@ export default async function Home() {
               </div>
               <div>
                 <div className="flex flex-row">
-                  <p className="text-[1.5vw]"><span className="-z-10 text-[#85F900] ml-[1vw] transition-all duration-500 hover:drop-shadow-[0_1px_2.5px_rgba(133,249,0,1)]">Everything</span><span className="text-[#CCCCCC]"> in a simple extension</span><span className="text-[#CCCCCC]"> - </span></p>
+                  <p className="text-[1.5vw]"><span className="-z-10 text-[#85F900] ml-[1vw] font-semibold transition-all duration-500 hover:drop-shadow-[0_1px_2.5px_rgba(133,249,0,1)]">Everything</span><span className="text-[#CCCCCC]"> in a simple extension</span><span className="text-[#CCCCCC]"> - </span></p>
                   <button className="flex flex-row ml-[0.5vw] px-[0.5vw] py-[0.2vw] border border-[#F580F1] rounded-lg hover:border-white transition-colors duration-500"><p className="text-[#CCCCCC] text-[1.4vw] transition-all duration-500 hover:drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">Add to chrome</p><img src="/chrome.png" className="W-[2vw] h-[2vw] ml-[0.5vw]" /></button>
                 </div>
               </div>
@@ -39,9 +39,6 @@ export default async function Home() {
             </aside>
           </section>
       </main>
-      <section className="h-[100vh] w-[100vw] bg-black grid-background">
-
-      </section>
     </>
   );
 }
