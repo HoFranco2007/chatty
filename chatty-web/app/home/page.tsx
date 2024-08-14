@@ -25,7 +25,6 @@ export default async function Home() {
             </div>
             <section className="bg-black h-[100vh] w-[100vw] grid-background">
                 <Navbar 
-                    isOpen = {false} 
                     page = {"Home"} 
                     logged = {true}
                 />
