@@ -9,7 +9,6 @@ export default async function Home() {
       </section>
       <main className="bg-black grid-background h-[300vh]">
         <Navbar 
-          isOpen = {false} 
           page = {"Home"} 
           logged = {false}
         />

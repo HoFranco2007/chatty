@@ -9,13 +9,12 @@ import { AuthButtonServer } from "./supabase/auth-button-server";
 import { supabaseClient } from "./supabase/clientClient";
 import { type Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import Settings from "./settings"
 
 const Navbar = ({ 
-  isOpen, 
   page,
   logged
 } : {
-  isOpen : boolean; 
   page : string;
   logged : boolean;
 }) => {
@@ -137,7 +136,7 @@ const Navbar = ({
           </ul>
           <aside 
             className={`fixed transition-all w-[20vw] h-[200vh] z-10 ${ isBurgerOpen ? "right-[0vw] bg-black border-l border-[#CCCCCC] duration-500" : "right-[-20vw] border-[#CCCCCC]/0 duration-300"}`}
-            style={{ top: `${asideTop - 1}px` }} 
+            style={{ top: `${asideTop - 0.5}px` }} 
           >
             <section className="flex flex-col items-center justify-between h-[80vh] w-full">
               <ul className="list-none flex flex-col items-center" id="nav-list">
@@ -160,15 +159,18 @@ const Navbar = ({
                 { logged ? (
                     <ul className="flex flex-col items-center">
                       <li className="" onClick={handleSignInGoogle}>
-                        <p className="text-black transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#CCCCCC] rounded-md cursor-pointer hover:bg-white">
-                          Sign Up
+                        <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-2 py-2 cursor-pointer hover:text-white">
+                          Shai Gilgeous-Alexander
                         </p>
                       </li>
-                      <li className="" onClick={handleSignInGoogle}>
-                        <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#3C3C3C]/70">
-                          Log In
-                        </p>
-                      </li>
+                      <div className="flex flex-row items-center p-2">
+                        <li className="px-2" onClick={handleSignInGoogle}>
+                          <img className="rounded-full w-[2.5vw] border border-[#CCCCCC]/40 cursor-pointer" src="/profile.png" alt="pedro" />
+                        </li>
+                        <li className="mx-2">
+                            <Settings/>
+                        </li>
+                      </div>
                     </ul>
                   ) : (
                     <ul className="flex flex-col items-center">
@@ -230,25 +232,26 @@ const Navbar = ({
             <div>
               { logged ? (
                   <ul className="flex flex-row items-center">
-                    <li className="mr-4 xl:mr-2" onClick={handleSignInGoogle}>
-                      <p className="text-black transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#CCCCCC] rounded-md cursor-pointer hover:bg-white">
-                        Sign Up
+                    <li className="" onClick={handleSignInGoogle}>
+                      <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-2 py-2 cursor-pointer hover:text-white">
+                        Shai Gilgeous-Alexander
                       </p>
                     </li>
-                    <li className="ml-4 xl:ml-2" onClick={handleSignInGoogle}>
-                      <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#3C3C3C]/70">
-                        Log In
-                      </p>
+                    <li className="px-2" onClick={handleSignInGoogle}>
+                      <img className="rounded-full w-[2.5vw] border border-[#CCCCCC]/40 cursor-pointer" src="/profile.png" alt="pedro" />
+                    </li>
+                    <li className="mx-2">
+                        <Settings/>
                     </li>
                   </ul>
                 ) : (
-                  <ul className="flex flex-row items-center">
-                    <li className="mr-4 xl:mr-2" onClick={handleSignInGoogle}>
+                  <ul className="flex flex-row items-center mr-4">
+                    <li className="mr-2" onClick={handleSignInGoogle}>
                       <p className="text-black transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#CCCCCC] rounded-md cursor-pointer hover:bg-white">
                         Sign Up
                       </p>
                     </li>
-                    <li className="ml-4 xl:ml-2" onClick={handleSignInGoogle}>
+                    <li className="ml-2" onClick={handleSignInGoogle}>
                       <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#3C3C3C]/70">
                         Log In
                       </p>
