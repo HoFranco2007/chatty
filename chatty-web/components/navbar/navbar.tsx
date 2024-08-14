@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import DeployableMenu from "./deployable-menu";
-import NavigationMenuTrigger from "./deployable-menu"
 import "./Navbar.css";
 import { supabase } from "./supabase/serverClient";
 import { AuthButtonServer } from "./supabase/auth-button-server";

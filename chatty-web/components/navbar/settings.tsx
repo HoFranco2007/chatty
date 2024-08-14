@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const Settings = () => {
     return(
         <svg xmlns="http://www.w3.org/2000/svg" className={`transition-all duration-500 cursor-pointer bi bi-gear-wide-connected opacity-70 hover:opacity-100`} width="2vw" height="2vw" fill="rgb(255, 255, 255, 1)" viewBox="0 0 16 16">

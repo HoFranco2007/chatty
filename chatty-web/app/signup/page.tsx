@@ -9,7 +9,7 @@ export default async function SignUp() {
             <img src="/home-bg.png" alt="" className="h-[100vh]"/>
           </div>
           <aside className="col-span-1 flex justify-center items-center">
-            <div className="bg-[#746767] w-[30vw] h-[80vh] rounded-lg mr-[16vw]">
+            <div className="bg-[#746767] w-[30vw] h-[80vh] rounded-lg mr-[12vw]">
                 Sign Up
             </div>
           </aside>
