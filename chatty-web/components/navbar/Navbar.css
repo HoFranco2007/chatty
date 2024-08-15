@@ -9,11 +9,10 @@
 }
 
 #nav-list span{
-  top: 32%;
-  width: 80px;
-  height: 35%;
+  height: 30%;
   background: #CCCCCC;
   opacity: 0.2;
   border-radius: 9999px;
   transition: .5s;
+  margin-bottom: 0.2vw;
 }
