@@ -10,7 +10,7 @@ export default async function Home() {
       <main className="bg-black grid-background h-[300vh]">
         <Navbar 
           page = {"Home"} 
-          logged = {false}
+          logged = {true}
         />
           <section className="flex flex-row justify-center">
             <aside className="flex flex-col justify-between h-[30vw]">

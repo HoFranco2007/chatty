@@ -25,37 +25,36 @@ const SignUpForm = () => {
   return (
     <section>
       <form
-        className="flex my-2 flex-col justify-center items-start mx-[0.6vw]"
+        className="flex my-[.5vh] flex-col justify-center items-start mx-[0.6vw]"
         onSubmit={handleSubmit}
       >
 
-        <div className="flex-col mb-4">
-          <p className="mb-1 ml-1 text-black text-[.95rem]">Email</p>
+        <div className="flex-col mb-[1.5vh] mt-[2vh]">
+          <p className="ml-1 text-white text-[.95rem]">Email</p>
           <input
             name="email"
-            title="EMAIL"
             placeholder="your@email.com"
             value={formData.email}
-            className="px-4 py-2 text-sm w-[25vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
+            className="px-4 py-[1.5vh] rounded text-sm text-[#CCCCCC]/50 w-[30vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
             onChange={handleInputChange}
           />
         </div>
 
-        <div className="flex-col mt-4 mb-2">
-          <p className="mb-1 ml-1 text-black text-[.95rem]">Password</p>
+        <div className="flex-col mt-[1.5vh] mb-[2vh]">
+          <p className="ml-1 text-white text-[.95rem]">Password</p>
           <input
             name="password"
             type="password"
             placeholder="your password"
             value={formData.password}
             onChange={handleInputChange}
-            className="px-4 py-2 text-sm w-[25vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
+            className="px-4 py-[1.5vh] rounded text-sm text-[#CCCCCC]/50 w-[30vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
           />
         </div>
 
         <button
           type="submit"
-          className="py-3 px-6 bg-[#CCCCCC] mt-12 hover:bg-white transition-colors duration-500"
+          className="py-[1.5vh] text-white px-6 bg-[#700079]/70 mt-[2.5vh] mb-[2vh] hover:bg-[#700079]/90 transition-colors duration-500 rounded-full"
         >
           <p className="">Create Account</p>
         </button>
