@@ -1,4 +1,5 @@
 import Navbar from "../components/navbar/navbar";
+import Footer from "../components/footer/footer"
 import "./globals.css";
 
 export default async function Home() {
@@ -7,11 +8,10 @@ export default async function Home() {
       <section className="absolute">
         <img src="/bg.png" alt="" className="relative h-[45vh] w-[100vw]"/>
       </section>
-      <main className="bg-black grid-background h-[300vh]">
-        <Navbar 
-          page = {"Home"} 
-          logged = {true}
-        />
+      <Navbar 
+        logged = {true}
+      />
+        <main className="">
           <section className="flex flex-row justify-center">
             <aside className="flex flex-col justify-between h-[30vw]">
               <div className="flex flex-col">
@@ -37,7 +37,10 @@ export default async function Home() {
               <img src={"/chatty.png"} alt="chatty" className="h-[40vw] w-[30vw] mr-[2vw] ml-[2vw] "></img>
             </aside>
           </section>
-      </main>
+        </main>
+        <footer className="flex justify-center w-[100vw] bottom-0">
+          <Footer />
+        </footer>
     </>
   );
 }

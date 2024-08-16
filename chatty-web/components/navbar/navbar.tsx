@@ -11,10 +11,8 @@ import { useRouter } from "next/navigation";
 import Settings from "./settings"
 
 const Navbar = ({ 
-  page,
   logged
 } : {
-  page : string;
   logged : boolean;
 }) => {
   const [scrolled, setScrolled] = useState(false);
