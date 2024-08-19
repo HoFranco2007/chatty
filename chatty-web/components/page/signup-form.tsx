@@ -35,7 +35,7 @@ const SignUpForm = () => {
             name="email"
             placeholder="your@email.com"
             value={formData.email}
-            className="px-4 py-[1.5vh] rounded text-sm text-[#CCCCCC]/50 w-[30vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
+            className="px-4 py-[1.5vh] rounded text-sm text-[#CCCCCC]/50 w-[35vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
             onChange={handleInputChange}
           />
         </div>
@@ -48,7 +48,7 @@ const SignUpForm = () => {
             placeholder="your password"
             value={formData.password}
             onChange={handleInputChange}
-            className="px-4 py-[1.5vh] rounded text-sm text-[#CCCCCC]/50 w-[30vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
+            className="px-4 py-[1.5vh] rounded text-sm text-[#CCCCCC]/50 w-[35vw] bg-transparent border border-[#CCCCCC]/70 focus:outline-none hover:border-white focus:border-white placeholder-[#CCCCCC]/50 focus:placeholder-transparent transition-colors duration-500"
           />
         </div>
 

@@ -14,7 +14,7 @@ export default async function SignUp() {
 
           <aside className="col-span-1 flex justify-center items-center">
 
-            <div className="bg-[#0e0e0e] w-[35vw] h-[85vh] mr-[12vw] flex flex-col justify-center px-[2vw] py-[3vh] rounded">
+            <div className="bg-[#0e0e0e] w-[40vw] h-[69vh] mr-[12vw] flex flex-col justify-center px-[2vw] py-[1vh] rounded">
               
               <div>
                 <h1 className="text-[1.65vw] text-white">Create an Account</h1>
@@ -46,8 +46,8 @@ export default async function SignUp() {
                 <Form/>
               </div>
 
-              <div className="ml-[.8vw] mx-[.5vh]">
-                <div className="mt-[2vh] text-sm tracking-normal">
+              <div className="ml-[.8vw]">
+                <div className="mt-[1vh] text-sm tracking-normal">
                   <p className="mt-[.5vh] text-[#CCCCCC] ">By signing up you agree to our <a className="text-[#700079] underline-offset-0 hover:underline transition-all duration-300 ml-[0.1vw]" href="">Terms of Service</a></p>
                   <p className="mt-[.5vh] text-[#CCCCCC]">Already have an account? <a className="text-[#700079] underline-offset-0 hover:underline transition-all duration-300 ml-[0.1vw]" href="">Log in</a></p>
                 </div>

@@ -1,21 +1,19 @@
 .divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .divider .line {
-    flex: 1;
-    border: none;
-    height: 1px;
-    width: 14vw;
-    background-color: #cccccc;
-    opacity: 0.7;
-  }
-  
-  .divider .text {
-    font-size: 1.2vw;
-    color: white;
-  }
-  
-  
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.divider .line {
+  flex: 1;
+  border: none;
+  height: 1px;
+  width: 16vw;
+  background-color: #cccccc;
+  opacity: 0.7;
+}
+
+.divider .text {
+  font-size: 1.2vw;
+  color: white;
+}

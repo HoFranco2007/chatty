@@ -14,7 +14,7 @@ export default async function LogIn() {
 
           <aside className="col-span-1 flex justify-center items-center">
 
-            <div className="bg-[#0e0e0e] w-[35vw] h-[80vh] mr-[12vw] flex flex-col justify-center px-[2vw] py-[2vh] rounded">
+            <div className="bg-[#0e0e0e] w-[40vw] h-[65vh] mr-[12vw] flex flex-col py-[3vh] px-[2vw] rounded">
               
               <div>
                 <h1 className="text-[1.65vw] text-white">Log into your Account</h1>
@@ -44,7 +44,7 @@ export default async function LogIn() {
                     <p className="flex items-center mt-[.2vh]">Google</p>
                   </button>
 
-                  <button className="px-[2vw] py-[1vh] flex flex-row justify-center items-center ml-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full">
+                  <button className="px-[2vw] pt-[1vh] flex flex-row justify-center items-center ml-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full">
                     <img src="/github.png" className="w-[1.2vw] mr-[.5vw]" alt="" />
                     <p className="flex items-center mt-[.2vh]">GitHub</p>
                   </button>

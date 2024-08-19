@@ -38,7 +38,7 @@ export default async function Home() {
             </aside>
           </section>
         </main>
-        <footer className="flex justify-center w-[100vw] bottom-0">
+        <footer className="flex justify-center w-[100vw]">
           <Footer />
         </footer>
     </>

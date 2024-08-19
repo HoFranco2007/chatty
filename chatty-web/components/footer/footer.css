@@ -2,16 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-#nav-list li{
-  z-index: 1;
-  display: inline-block;
-}
-
 #nav-list span{
-  height: 30%;
+  height: 10%;
   background: #CCCCCC;
   opacity: 0.2;
   border-radius: 9999px;
   transition: .5s;
   margin-bottom: 0.2vw;
+}
+
+hr{
+  border: none;
+  height: 1px;
+  background-color: #cccccc;
+  opacity: 0.8;
 }
