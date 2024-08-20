@@ -8,7 +8,7 @@ const checkPosition = () => {
         chrome.scripting.executeScript({
           target: { tabId: tabs[0].id },
           func: (positionBottom, positionLeft) => {
-            const chatty = document.getElementById('chatty');
+            const chatty = document.getElementById('chatty-img');
             if (chatty) {
               chatty.style.bottom = `${positionBottom}px`;
               chatty.style.left = `${positionLeft}px`;
@@ -22,15 +22,14 @@ const checkPosition = () => {
               }
             } else {
                 const newChatty = document.createElement('img');
-                newChatty.id = 'chatty-img'
-                newChatty.src = chrome.runtime.getURL("/chatty.png");
-                newChatty.style.position = 'absolute';
-                newChatty.style.bottom = `${positionBottom}px`;
-                newChatty.style.left = `${positionLeft}px`;
-                newChatty.style.width = '350px';
-                newChatty.style.height = '300px';
-                newChatty.style.zIndex = '9999';
-                newChatty.style.opacity = '1';
+                  newChatty.id = 'chatty-img';
+                  chatty.src = '/chatty.png';
+                  chatty.style.position = 'fixed';
+                  newChatty.style.bottom = `${positionBottom}px`;
+                  newChatty.style.left = `${positionLeft}px`;
+                  chatty.style.zIndex = '9999';
+                  chatty.style.width = '200px';
+                  chatty.style.height = '200px';
                 document.body.appendChild(newChatty);
             }
           },
