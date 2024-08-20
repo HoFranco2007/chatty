@@ -65,11 +65,11 @@ const Footer = () => {
                     <div>
                         <hr className="h-[1px] w-[100vw]"/>
                     </div>
-                    <div className="flex flex-row justify-between w-[100vw] h-8 px-[2vw]">
+                    <div className="flex flex-row justify-between w-[100vw] h-8 px-[2vw] bg-black">
                         <ul className="flex flex-row justify-center items-center">
-                            <li className="text-[#CCCCCC]/80 text-sm mx-[1vw] cursor-pointer hover:text-white cursor-pointer">Terms</li>
-                            <li className="text-[#CCCCCC]/80 text-sm mx-[1vw] hover:text-white cursor-pointer">Privacy</li>
-                            <li className="text-[#CCCCCC]/80 text-sm mx-[1vw] hover:text-white cursor-pointer">Conditions</li>
+                            <li className="text-[#CCCCCC]/80 text-[1vw] mx-[1vw] hover:text-white cursor-pointer">Terms</li>
+                            <li className="text-[#CCCCCC]/80 text-[1vw] mx-[1vw] hover:text-white cursor-pointer">Privacy</li>
+                            <li className="text-[#CCCCCC]/80 text-[1vw] mx-[1vw] hover:text-white cursor-pointer">Conditions</li>
                         </ul>
                         <div className="flex flex-row items-center justify-center">
                             <img className="w-[15px] h-[15px] mx-[.5vw] cursor-pointer" src="/YouTube.png" alt="" />
