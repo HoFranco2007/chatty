@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.cdnfonts.com/css/mona-sans');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Mona Sans', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: black;
+  padding-right: 1px;
+  padding-left: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #332f2c;
+	border-radius: 5px;
+  margin-right: 1px;
+  margin-left: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #040506;
+}
+
+.grid-background {
+  background-image: linear-gradient(to right, #0f0f0f 1px, transparent 1px),
+                    linear-gradient(to bottom, #0f0f0f 1px, transparent 1px);
+  background-size: 25px 25px;
+}
