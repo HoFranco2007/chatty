@@ -1,7 +1,4 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-const checkPosition = () => {
+const changePosition = () => {
   chrome.storage.local.get(['positionBottom', 'positionLeft'], ({ positionBottom, positionLeft }) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs[0]) {
@@ -21,16 +18,17 @@ const checkPosition = () => {
                 document.body.style.backgroundColor = 'rgba(0, 0, 0, 0)';
               }
             } else {
-                const newChatty = document.createElement('img');
-                  newChatty.id = 'chatty-img';
-                  chatty.src = '/chatty.png';
-                  chatty.style.position = 'fixed';
-                  newChatty.style.bottom = `${positionBottom}px`;
-                  newChatty.style.left = `${positionLeft}px`;
-                  chatty.style.zIndex = '9999';
-                  chatty.style.width = '200px';
-                  chatty.style.height = '200px';
-                document.body.appendChild(newChatty);
+              const newChatty = document.createElement('img');
+              newChatty.id = 'chatty-img'
+              newChatty.src = chrome.runtime.getURL("/chatty.png");
+              newChatty.style.position = 'absolute';
+              newChatty.style.bottom = `${positionBottom}px`;
+              newChatty.style.left = `${positionLeft}px`;
+              newChatty.style.width = '300px';
+              newChatty.style.height = '300px';
+              newChatty.style.zIndex = '9999';
+              newChatty.style.opacity = '1';
+              document.body.appendChild(newChatty);
             }
           },
           args: [positionBottom, positionLeft]

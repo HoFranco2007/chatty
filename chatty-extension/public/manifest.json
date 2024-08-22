@@ -28,12 +28,12 @@
   "content_scripts": [
     {
       "matches": ["https://*/*", "http://*/*"],
-      "js": ["injector.js"]
+      "js": ["content.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["./background.js", "chatty.png", "./lion/chatty.gltf"],
+      "resources": ["./background.js", "chatty.png", "./content.js"],
       "matches": ["https://*/*", "http://*/*"]
     }
   ],

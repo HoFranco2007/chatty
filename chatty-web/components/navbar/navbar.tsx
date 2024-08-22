@@ -1,14 +1,15 @@
 "use client"
 
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import DeployableMenu from "./deployable-menu";
 import "./Navbar.css";
 import { supabase } from "./supabase/serverClient";
-import { AuthButtonServer } from "./supabase/auth-button-server";
 import { supabaseClient } from "./supabase/clientClient";
 import { type Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
 import Settings from "./settings"
+import SignOut from "./signout"
 
 const Navbar = ({ 
   logged
@@ -81,7 +82,6 @@ const Navbar = ({
       setAsideTop(navHeight); 
     }
   }, [scrolled, isBurgerOpen]);
-
 
   const handleMouseEnter = (index : number) => {
     setHoveredIndex(index);
@@ -240,18 +240,23 @@ const Navbar = ({
                     <li className="mx-2">
                         <Settings/>
                     </li>
+                    <li className="ml-6 mr-2 flex justify-center items-center">
+                      <button onClick={handelSignOut}>
+                        <SignOut/>
+                      </button>
+                    </li>
                   </ul>
                 ) : (
                   <ul className="flex flex-row items-center mr-4">
                     <li className="mr-2" onClick={handleSignInGoogle}>
-                      <p className="text-black transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#CCCCCC] rounded-md cursor-pointer hover:bg-white">
+                      <Link href={"/signup"} className="text-black transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#CCCCCC] rounded-md cursor-pointer hover:bg-white">
                         Sign Up
-                      </p>
+                      </Link>
                     </li>
                     <li className="ml-2" onClick={handleSignInGoogle}>
-                      <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#3C3C3C]/70">
+                      <Link href={"/login"} className="text-white/70 transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#3C3C3C]/70">
                         Log In
-                      </p>
+                      </Link>
                     </li>
                   </ul>
               )}

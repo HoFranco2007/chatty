@@ -1,8 +1,26 @@
+"use client"
+
 import "../globals.css"
 import "./signup.css"
 import Form from "../../components/page/signup-form"
+import { useRouter } from "next/navigation";
+import { supabaseClient } from "@/components/navbar/supabase/clientClient";
 
 export default async function SignUp() {
+  const router = useRouter()
+
+  const handleSignInGoogle = async () => {
+    await supabaseClient.auth.signInWithOAuth({
+        provider:"google",
+        options: {
+            redirectTo: "http://localhost:3000/auth/callback"
+        }
+    })
+  }
+  const handleSignOut = async () => {
+      await supabaseClient.auth.signOut()
+      router.push("/")
+  }
   return(
     <>
       <main className="h-[100vh] w-[100vw] bg-black grid-background">

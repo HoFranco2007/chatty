@@ -1,8 +1,28 @@
+"use client"
+
 import "./login.css"
 import "../globals.css";
 import Form from "../../components/page/login-form"
+import { useRouter } from "next/navigation";
+import { supabaseClient } from "@/components/navbar/supabase/clientClient";
 
 export default async function LogIn() {
+
+  const router = useRouter()
+
+  const handleSignInGoogle = async () => {
+    await supabaseClient.auth.signInWithOAuth({
+        provider:"google",
+        options: {
+            redirectTo: "http://localhost:3000/auth/callback"
+        }
+    })
+  }
+  const handleSignOut = async () => {
+      await supabaseClient.auth.signOut()
+      router.push("/")
+  }
+
   return(
     <>
       <main className="h-[100vh] w-[100vw] bg-black grid-background">
@@ -39,7 +59,10 @@ export default async function LogIn() {
               <div className="flex flex-col justify-center items-center px-[2vw] py-[2vh]">
                 <div className="flex flex-row justify-center items-center px-[2vw] py-[1vh]">
 
-                  <button className="px-[2vw] py-[1vh] flex flex-row justify-center items-center mr-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full">
+                  <button 
+                  className="px-[2vw] py-[1vh] flex flex-row justify-center items-center mr-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full"
+                  onClick={handleSignInGoogle}
+                  >
                     <img src="/google.png" className="w-[1.2vw] mr-[.5vw]" alt="" />
                     <p className="flex items-center mt-[.2vh]">Google</p>
                   </button>

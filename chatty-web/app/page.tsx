@@ -9,7 +9,7 @@ export default async function Home() {
         <img src="/bg.png" alt="" className="relative h-[45vh] w-[100vw]"/>
       </section>
       <Navbar 
-        logged = {true}
+        logged = {false}
       />
         <main className="">
           <section className="flex flex-row justify-center">
