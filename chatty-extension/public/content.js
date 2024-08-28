@@ -3,20 +3,20 @@ console.log(html);
 chrome.runtime.sendMessage({ action: "captureHTML", data: html });
 
 
-fetch('http://localhost:3000/getData',
-  {mode: 'no-cors',
+fetch('http://localhost:3000/getData', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
     },
-    body: JSON.stringify({html: html})
-  }
-)
-  .then(response => {
+    body: JSON.stringify({ html: html })
+})
+.then(response => {
     if (!response.ok) {
-        throw new Error('Network response was not ok');
+        return response.text().then(text => {
+            throw new Error(`Network response was not ok: ${response.status} ${response.statusText} - ${text}`);
+        });
     }
-    return response.json();
+    return response.json(); // Assuming the server returns JSON
 })
 .then(data => {
     console.log('Received data:', data);
