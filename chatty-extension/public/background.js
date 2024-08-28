@@ -5,8 +5,21 @@ const changePosition = () => {
         chrome.scripting.executeScript({
           target: { tabId: tabs[0].id },
           func: (positionBottom, positionLeft) => {
+            var id = null;
             const chatty = document.getElementById('chatty-img');
             if (chatty) {
+              // var pos = 0;
+              // clearInterval(id);
+              // id = setInterval(frame, 10);
+              // function frame() {
+              //   if (pos === positionLeft) {
+              //     clearInterval(id);
+              //   } else {
+              //     pos++; 
+              //     chatty.style.bottom = pos + 'px'; 
+              //     chatty.style.left = pos + 'px'; 
+              //   }
+              // }
               chatty.style.bottom = `${positionBottom}px`;
               chatty.style.left = `${positionLeft}px`;
               if (positionLeft > 0){
@@ -21,13 +34,13 @@ const changePosition = () => {
               const newChatty = document.createElement('img');
               newChatty.id = 'chatty-img'
               newChatty.src = chrome.runtime.getURL("/chatty.png");
-              newChatty.style.position = 'absolute';
+              newChatty.style.position = 'fixed';
               newChatty.style.bottom = `${positionBottom}px`;
               newChatty.style.left = `${positionLeft}px`;
               newChatty.style.width = '300px';
               newChatty.style.height = '300px';
               newChatty.style.zIndex = '9999';
-              newChatty.style.opacity = '1';
+              newChatty.style.opacity = '1';  
               document.body.appendChild(newChatty);
             }
           },
@@ -38,4 +51,4 @@ const changePosition = () => {
   });
 };
 
-setInterval(checkPosition, 100);
+setInterval(changePosition, 100);
