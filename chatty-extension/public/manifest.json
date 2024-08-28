@@ -5,6 +5,7 @@
   "description": "Chatty, The Web Teacher, is an A.I. that basically guides you through the web.",
   "permissions": [
     "storage", 
+    "http://localhost:3000/",
     "activeTab", 
     "scripting", 
     "tabs"], 
