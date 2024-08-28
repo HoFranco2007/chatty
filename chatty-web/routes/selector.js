@@ -15,5 +15,15 @@ router.post('/getData', (req, res) => {
     res.json({ message: 'Data received successfully', data: receivedData });
 });
 
+// app.get('/getDataFromDB', (req, res) => {
+//     const dataFromDB = {
+//         id: 1,
+//         name: 'Sample Data',
+//         value: 'This is a value from the database'
+//     };
+
+//     res.json(dataFromDB);
+// });
+
 // Export the router
 export default router;
