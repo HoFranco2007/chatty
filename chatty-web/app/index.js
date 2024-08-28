@@ -5,6 +5,10 @@ import router from '../routes/selector.js'; // Importa el router
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cors({
+    origin: 'chrome-extension://your-extension-id'
+  }));
+  
 
 const PORT = process.env.PORT || 3000;
 
