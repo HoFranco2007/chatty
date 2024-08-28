@@ -52,3 +52,11 @@ const changePosition = () => {
 };
 
 setInterval(changePosition, 100);
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === 'captureHTML') {
+      console.log('Captured HTML:', request.data);
+  } else if (request.action === 'getData') {
+      console.log('Received data:', request.data);
+  }
+});
