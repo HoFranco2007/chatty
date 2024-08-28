@@ -155,13 +155,13 @@ const Navbar = ({
               <div>
                 { logged ? (
                     <ul className="flex flex-col items-center">
-                      <li className="" onClick={handleSignInGoogle}>
+                      <li className="">
                         <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-2 py-2 cursor-pointer hover:text-white">
                           Shai Gilgeous-Alexander
                         </p>
                       </li>
                       <div className="flex flex-row items-center p-2">
-                        <li className="px-2" onClick={handleSignInGoogle}>
+                        <li className="px-2">
                           <img className="rounded-full w-[2.5vw] border border-[#CCCCCC]/40 cursor-pointer" src="/profile.png" alt="pedro" />
                         </li>
                         <li className="mx-2">
@@ -248,12 +248,12 @@ const Navbar = ({
                   </ul>
                 ) : (
                   <ul className="flex flex-row items-center mr-4">
-                    <li className="mr-2" onClick={handleSignInGoogle}>
+                    <li className="mr-2">
                       <Link href={"/signup"} className="text-black transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#CCCCCC] rounded-md cursor-pointer hover:bg-white">
                         Sign Up
                       </Link>
                     </li>
-                    <li className="ml-2" onClick={handleSignInGoogle}>
+                    <li className="ml-2">
                       <Link href={"/login"} className="text-white/70 transition-colors duration-500 font-medium text-sm px-4 py-2 bg-[#1d1c1c56] rounded-md border border-[#525050] cursor-pointer hover:bg-[#3C3C3C]/70">
                         Log In
                       </Link>
