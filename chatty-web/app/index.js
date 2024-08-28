@@ -12,7 +12,7 @@ app.use(cors({
 
 const PORT = process.env.PORT || 3000;
 
-app.use("/data", router); // Usa el router en la ruta /data
+app.use("/", router);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
