@@ -12,32 +12,26 @@ const ChatBot = () => {
     const [positionLeft, setPositionLeft] = useState(0);
 
     useEffect(() => {
-        // Generate a unique session ID on component mount
         const sessionId = Date.now().toString();
         sessionStorage.setItem('chatBotSessionId', sessionId);
 
-        // Retrieve position values from storage on component mount
         chrome.storage.local.get(['positionBottom', 'positionLeft', 'storedSessionId'], (result) => {
             if (result.storedSessionId !== sessionId) {
-                // If the stored session ID doesn't match, reset positions
                 setPositionBottom(0);
                 setPositionLeft(0);
                 chrome.storage.local.set({ positionBottom: 0, positionLeft: 0, storedSessionId: sessionId });
             } else {
-                // If session IDs match, use stored positions
                 setPositionBottom(result.positionBottom || 0);
                 setPositionLeft(result.positionLeft || 0);
             }
         });
 
-        // Clean up function to remove session ID when component unmounts
         return () => {
             sessionStorage.removeItem('chatBotSessionId');
         };
     }, []);
 
     useEffect(() => {
-        // Save position values and session ID to storage whenever they change
         const sessionId = sessionStorage.getItem('chatBotSessionId');
         chrome.storage.local.set({ positionBottom, positionLeft, storedSessionId: sessionId });
     }, [positionBottom, positionLeft]);
@@ -45,7 +39,7 @@ const ChatBot = () => {
     const handleChangePosition = () => {
         if (positionBottom === 0 && positionLeft === 0) {
             setPositionBottom(700);
-            setPositionLeft(1100);
+            setPositionLeft(1500);
         } else {  
             setPositionBottom(0);
             setPositionLeft(0);
@@ -71,11 +65,13 @@ const ChatBot = () => {
     const generateBotResponse = (userMessage: string): string => {
         if (userMessage.toLowerCase().includes('sign up')) {
             handleChangePosition();
-            return "Obvio, para ello debes clickear en el botón rojo de 'Sign Up' en la esquina superior derecha.";
+            return "Obvio, para ello debes clickear en el botón resaltado de verde que dice 'Sign Up' en la esquina superior derecha.";
         } else if (userMessage.toLowerCase().includes('sirve')) {
             return "Github es una plataforma de desarrollo colaborativo para alojar proyectos utilizando el sistema de control de versiones Git.";
         } else if (userMessage.toLowerCase().includes('gracias')){
             return "De nada, estoy para ayudarte.";
+        } else if (userMessage.toLowerCase().includes('usarlo')) {
+            return "Lo podes usar para alojar tu código fuente y llevar un control de versiones de tus proyectos.";
         } else {
             return "Lo siento, no sé cómo responder a eso. ¿Podrías intentar preguntar de otra forma?";
         }

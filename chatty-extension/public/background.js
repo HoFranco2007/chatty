@@ -17,10 +17,8 @@ const changePosition = () => {
                   } else if (element.className === 'home-campaign-hero') {
                       element.style.opacity = '0';
                   } else {
-                        element.style.backgroundColor = '#FF0000';
-                        element.style.position = 'absolute';
-                        element.style.zIndex = '9999';
-                        element.style.color = '#eeeeee';
+                        element.style.backgroundColor = '#85F900';
+                        element.style.color = '#000000';
                     }
                   }
                 )};
