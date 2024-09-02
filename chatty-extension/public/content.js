@@ -1,27 +1,32 @@
-const html = document.documentElement.outerHTML;
-console.log(html);
-chrome.runtime.sendMessage({ action: "captureHTML", data: html });
+chrome.tabs.onActivated.addListener((activeInfo) => {
+    // Obtén información de la pestaña activa
+    chrome.tabs.get(activeInfo.tabId, (tab) => {
+        if (tab && tab.url) {
+            const url = tab.url;
+            console.log('Current tab URL:', url);
 
-
-fetch('http://localhost:3000/getData', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ html: html })
-})
-.then(response => {
-    if (!response.ok) {
-        return response.text().then(text => {
-            throw new Error(`Network response was not ok: ${response.status} ${response.statusText} - ${text}`);
-        });
-    }
-    return response.json(); // Assuming the server returns JSON
-})
-.then(data => {
-    console.log('Received data:', data);
-    chrome.runtime.sendMessage({ action: "getData", data: data });
-})
-.catch(error => {
-    console.error('Error fetching data:', error);
+            // Enviar la URL al servidor
+            fetch('http://localhost:3000/getData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        throw new Error(`Network response was not ok: ${response.status} ${response.statusText} - ${text}`);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                chrome.runtime.sendMessage({ action: "getData", data: data });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        }
+    });
 });

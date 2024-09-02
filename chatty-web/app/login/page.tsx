@@ -67,7 +67,7 @@ export default async function LogIn() {
                     <p className="flex items-center mt-[.2vh]">Google</p>
                   </button>
 
-                  <button className="px-[2vw] pt-[1vh] flex flex-row justify-center items-center ml-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full">
+                  <button className="px-[2vw] py-[1vh] flex flex-row justify-center items-center ml-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full">
                     <img src="/github.png" className="w-[1.2vw] mr-[.5vw]" alt="" />
                     <p className="flex items-center mt-[.2vh]">GitHub</p>
                   </button>

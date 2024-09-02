@@ -27,7 +27,7 @@ const Footer = () => {
       };
 
     return(
-        <section className="h-[200vh] bottom-0 flex justify-end items-end">
+        <section className="bottom-0 flex justify-end items-end">
             <nav className="h-[25vh] bottom-0 flex justify-center items-baseline border-t border-[#CCCCCC]/80 w-[100vw] bg-black" id="">
                 <div className="flex flex-col justify-center items-center w-[100vw]">
                     <ul className="h-[10vh] bottom-0 flex flex-row items-center my-[1vh]" id="nav-list">
