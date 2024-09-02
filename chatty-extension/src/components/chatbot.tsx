@@ -39,7 +39,7 @@ const ChatBot = () => {
     const handleChangePosition = () => {
         if (positionBottom === 0 && positionLeft === 0) {
             setPositionBottom(700);
-            setPositionLeft(1500);
+                setPositionLeft(1500);
         } else {  
             setPositionBottom(0);
             setPositionLeft(0);

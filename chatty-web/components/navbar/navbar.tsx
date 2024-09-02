@@ -12,9 +12,15 @@ import Settings from "./settings"
 import SignOut from "./signout"
 
 const Navbar = ({ 
-  logged
+  logged,
+  name,
+  email,
+  avatar
 } : {
   logged : boolean;
+  name: string | undefined;
+  email: string | undefined;
+  avatar: string | undefined;
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [smallScreen, setSmallScreen] = useState(false);
@@ -33,13 +39,17 @@ const Navbar = ({
       provider: "google",
       options: {
         redirectTo: "http://localhost:3000/auth/callback",
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        },
       },
     });
   };
-
+  
   const handelSignOut = async () => {
     await supabaseClient.auth.signOut();
-    router.refresh();
+    router.push("/");
   };
 
   useEffect(() => {
@@ -157,12 +167,12 @@ const Navbar = ({
                     <ul className="flex flex-col items-center">
                       <li className="">
                         <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-2 py-2 cursor-pointer hover:text-white">
-                          Shai Gilgeous-Alexander
+                          {name}
                         </p>
                       </li>
                       <div className="flex flex-row items-center p-2">
                         <li className="px-2">
-                          <img className="rounded-full w-[2.5vw] border border-[#CCCCCC]/40 cursor-pointer" src="/profile.png" alt="pedro" />
+                          <img className="rounded-full w-[2.5vw] border border-[#CCCCCC]/40 cursor-pointer" src={avatar} alt="pedro" />
                         </li>
                         <li className="mx-2">
                             <Settings/>
@@ -229,13 +239,13 @@ const Navbar = ({
             <div>
               { logged ? (
                   <ul className="flex flex-row items-center">
-                    <li className="" onClick={handleSignInGoogle}>
+                    <li className="">
                       <p className="text-white/70 transition-colors duration-500 font-medium text-sm px-2 py-2 cursor-pointer hover:text-white">
-                        Shai Gilgeous-Alexander
+                        {name}
                       </p>
                     </li>
-                    <li className="px-2" onClick={handleSignInGoogle}>
-                      <img className="rounded-full w-[2.5vw] border border-[#CCCCCC]/40 cursor-pointer" src="/profile.png" alt="pedro" />
+                    <li className="px-2">
+                      <img className="rounded-full w-[2.5vw] border border-[#CCCCCC]/40 cursor-pointer" src={avatar} alt="pedro" />
                     </li>
                     <li className="mx-2">
                         <Settings/>

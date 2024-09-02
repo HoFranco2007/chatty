@@ -1,9 +1,10 @@
+
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer"
 import "../globals.css";
 import Card from "@/components/card";
 import SFCAdvantages from "@/components/info";
-
+import { supabase } from "@/components/navbar/supabase/serverClient";
 
 const DiscoverIcon = () => (
   <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -25,12 +26,20 @@ const TimeIcon = () => (
 
 export default async function Home() {
 
+  const { data, error } = await supabase.auth.getUser()
+  const name = data.user?.user_metadata.full_name
+  const email = data.user?.email
+  const avatar = data.user?.user_metadata.avatar_url
+
   return (
     <>
       <section className="absolute">
         <img src="/bg.png" alt="" className="relative h-[45vh] w-[100vw]"/>
       </section>
       <Navbar 
+        name={name}
+        email={email}
+        avatar={avatar}
         logged = {true}
       />
         <main className="">
