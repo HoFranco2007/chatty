@@ -60,7 +60,7 @@ export default async function Home() {
             </aside>
           </section>
         </main>
-        <div className="flex flex-row my-[12vh]">
+        <div className="flex flex-row mt-[12vh]">
           <Card
           title="Descubre Información Oculta"
           description="Deja que nuestra IA explore la web por ti, encontrando datos valiosos que podrían haberte pasado por alto. Haz que la información trabaje a tu favor."
@@ -83,7 +83,7 @@ export default async function Home() {
             icon={<TimeIcon />}
           />
       </div>
-      <section className="flex items-center justify-cente flex-col my-[12vh] mx-[3vw]">
+      <section className="flex items-center justify-cente flex-col mt-[12vh]">
         <SFCAdvantages />
       </section>
         <footer className="flex justify-center w-[100vw]">
