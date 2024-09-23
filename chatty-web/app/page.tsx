@@ -32,6 +32,9 @@ export default async function Home() {
       </section>
       <Navbar 
         logged = {false}
+        email= {undefined}
+        name={undefined}
+        avatar={undefined}
       />
         <main className="">
           <section className="flex flex-row justify-center">
