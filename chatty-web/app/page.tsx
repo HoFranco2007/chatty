@@ -3,6 +3,7 @@ import Footer from "../components/footer/footer"
 import "./globals.css";
 import Card from "@/components/card";
 import SFCAdvantages from "@/components/info";
+import ScrollCards from "@/components/page/cards-scroll";
 
 
 const DiscoverIcon = () => (
@@ -64,28 +65,8 @@ export default async function Home() {
           </section>
         </main>
         <div className="flex flex-row mt-[12vh]">
-          <Card
-          title="Descubre Información Oculta"
-          description="Deja que nuestra IA explore la web por ti, encontrando datos valiosos que podrían haberte pasado por alto. Haz que la información trabaje a tu favor."
-          linkText="Descubre Más"
-          linkUrl="/home"
-          icon={<DiscoverIcon />}
-          />
-          <Card
-            title="Toma Decisiones Más Inteligentes"
-            description="Convierte los datos en decisiones. Nuestra IA te ofrece análisis detallados para que tomes decisiones más informadas y estratégicas."
-            linkText="Comienza Ahora"
-            linkUrl="/home"
-            icon={<DecisionIcon />}
-          />
-          <Card
-            title="Ahorra Tiempo y Recursos"
-            description="Automatiza la recopilación y análisis de datos, ahorrando tiempo y recursos valiosos. Enfócate en lo que realmente importa, nosotros nos encargamos del resto."
-            linkText="Optimiza Ahora"
-            linkUrl="/home"
-            icon={<TimeIcon />}
-          />
-      </div>
+          <ScrollCards />
+        </div>
       <section className="flex items-center justify-cente flex-col mt-[12vh]">
         <SFCAdvantages />
       </section>
