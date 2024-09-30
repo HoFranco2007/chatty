@@ -103,11 +103,11 @@ const Navbar = ({
   };
 
   return (
-    <header className={`top-0 overflow-x-hidden ${ smallScreen ? "pb-[4vw]" : "pb-[2.5vw]"}`}>
+    <header className={`top-0 z-50 overflow-x-hidden ${ smallScreen ? "pb-[4vw]" : "pb-[2.5vw]"}`}>
       {smallScreen ? (
         <nav 
-          className={`fixed z-20 flex flex-row items-center justify-between w-[100vw] transition-all border-b 
-                      ${isBurgerOpen || scrolled ? "bg-black border-b border-[#CCCCCC] duration-1000" : "border-[#CCCCCC]/0 duration-200"}`}
+          className={`fixed z-50 flex flex-row items-center justify-between w-[100vw] transition-all border-b 
+                      ${isBurgerOpen || scrolled ? "bg-black border-b border-[#CCCCCC] duration-1000" : "border-[#CCCCCC]/0 duration-200 z-50"}`}
           ref={navRef}
         >
           <ul className="flex flex-row items-center justify-between w-[100vw] px-6 py-2">
@@ -199,7 +199,7 @@ const Navbar = ({
         </nav>
       ) : (
         <nav
-          className={` fixed flex flex-row items-center justify-around w-[100vw] ${
+          className={` fixed flex flex-row items-center justify-around w-[100vw] z-50 ${
             scrolled
               ? "bg-[#202020]/60 border-b border-b-[#CCCCCC]/80 transition-all duration-1000 shadow-4xl"
               : " transition-all duration-1000 border-b-0 border-b-white/0"
