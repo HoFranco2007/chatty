@@ -33,12 +33,12 @@ export default async function Home() {
       </section>
       <Navbar 
         logged = {false}
-        email= {undefined}
         name={undefined}
+        email={undefined}
         avatar={undefined}
       />
         <main className="">
-          <section className="flex flex-row justify-center">
+          <section className="flex flex-row justify-center mt-[6vh] pb-[10vh]">
             <aside className="flex flex-col justify-between h-[30vw]">
               <div className="flex flex-col">
                 <div>
