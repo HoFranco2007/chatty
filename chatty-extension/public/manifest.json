@@ -32,7 +32,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["./background.js", "chatty.png", "./content.js"],
+      "resources": ["./background.js", "chatty.png", "./content.js", "htmlImg.svg"],
       "matches": ["https://*/*", "http://*/*"]
     }
   ],

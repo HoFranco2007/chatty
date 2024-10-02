@@ -73,7 +73,7 @@ const ScrollCard: React.FC = () => {
   }, []);
 
   return (
-    <section className="h-[250vh] w-[100vw] flex items-start justify-center bg-[#0e0e0e]">
+    <section className="h-[250vh] w-[100vw] flex items-start justify-center bg-[#0e0e0e] border-t border-[#CCCCCC]">
       <div className="relative flex flex-col items-center justify-center">
         <div 
           ref={titleRef}
@@ -84,7 +84,7 @@ const ScrollCard: React.FC = () => {
         <div className="relative flex flex-row items-end justify-center">
           <div
             ref={cardRef}
-            className="w-[50vw] h-[40vh] p-8 bg-[#CCCCCC] rounded-lg shadow-lg flex justify-center items-center"
+            className="w-[50vw] h-[40vh] p-8 bg-white rounded-lg shadow-lg flex justify-center items-center"
           >
             <AnimatePresence mode='wait'>
               <motion.div
@@ -96,7 +96,7 @@ const ScrollCard: React.FC = () => {
                 className=""
               >
                 <div className="">
-                  <img src={cardData[currentIndex].img} alt="" className='w-[50vw] max-h-[35vh]' />
+                  <img src={cardData[currentIndex].img} alt="" className='w-[50vw] max-h-[34vh]' />
                 </div>
               </motion.div>
             </AnimatePresence>

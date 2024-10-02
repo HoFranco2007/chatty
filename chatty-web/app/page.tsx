@@ -1,9 +1,9 @@
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer"
 import "./globals.css";
-import Card from "@/components/card";
 import SFCAdvantages from "@/components/info";
 import ScrollCards from "@/components/page/cards-scroll";
+import Separator from "@/components/page/separator";
 
 
 const DiscoverIcon = () => (
@@ -38,7 +38,7 @@ export default async function Home() {
         avatar={undefined}
       />
         <main className="">
-          <section className="flex flex-row justify-center mt-[6vh] pb-[10vh]">
+          <section className="flex flex-row justify-center mt-[7vh] pb-[10vh]">
             <aside className="flex flex-col justify-between h-[30vw]">
               <div className="flex flex-col">
                 <div>
@@ -55,7 +55,7 @@ export default async function Home() {
               <div>
                 <div className="flex flex-row">
                   <p className="text-[1.5vw]"><span className="-z-10 text-[#85F900] ml-[1vw] font-semibold transition-all duration-500 hover:drop-shadow-[0_1px_2.5px_rgba(133,249,0,1)]">Everything</span><span className="text-[#CCCCCC]"> in a simple extension</span><span className="text-[#CCCCCC]"> - </span></p>
-                  <button className="flex flex-row ml-[0.5vw] px-[0.5vw] py-[0.2vw] border border-[#F580F1] rounded-lg hover:border-white transition-colors duration-500"><p className="text-[#CCCCCC] text-[1.4vw] transition-all duration-500 hover:drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">Add to chrome</p><img src="/chrome.png" className="W-[2vw] h-[2vw] ml-[0.5vw]" /></button>
+                  <button className="flex flex-row ml-[0.5vw] px-[0.5vw] py-[0.2vw] border border-[#F580F1] rounded-lg hover:border-white transition-colors duration-500"><p className="text-[#CCCCCC] text-[1.4vw] transition-all duration-500 hover:drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">Add to chrome</p><img src="/icons/chrome.png" className="W-[2vw] h-[2vw] ml-[0.5vw]" /></button>
                 </div>
               </div>
             </aside>
@@ -67,8 +67,12 @@ export default async function Home() {
         <div className="flex flex-row mt-[12vh]">
           <ScrollCards />
         </div>
-      <section className="flex items-center justify-cente flex-col mt-[12vh]">
-        <SFCAdvantages />
+      <section className="flex items-center justify-center mb-[12vh]">
+        <Separator />
+      </section>
+      <section className="text-white h-[100vh] w-[100vw]">
+        <h1>Navigate with confidence</h1>
+        <h3>With chatty you will never get lost in a web page again.</h3>
       </section>
         <footer className="flex justify-center w-[100vw]">
           <Footer />

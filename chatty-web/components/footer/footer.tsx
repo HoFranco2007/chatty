@@ -72,8 +72,8 @@ const Footer = () => {
                             <li className="text-[#CCCCCC]/80 text-[1vw] mx-[1vw] hover:text-white cursor-pointer">Conditions</li>
                         </ul>
                         <div className="flex flex-row items-center justify-center">
-                            <img className="w-[15px] h-[15px] mx-[.5vw] cursor-pointer" src="/YouTube.png" alt="" />
-                            <img className="w-[15px] h-[15px] mx-[.5vw] cursor-pointer" src="/Instagram.png" alt="" />
+                            <img className="w-[15px] h-[15px] mx-[.5vw] cursor-pointer" src="/icons/YouTube.png" alt="" />
+                            <img className="w-[15px] h-[15px] mx-[.5vw] cursor-pointer" src="/icons/Instagram.png" alt="" />
                         </div>
                     </div>
                 </div>

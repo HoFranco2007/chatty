@@ -42,12 +42,12 @@ export default async function SignUp() {
                 <div className="flex flex-row justify-center items-center px-[2vw] py-[2vh]">
 
                   <button className="px-[2vw] py-[1vh] flex flex-row justify-center items-center mr-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full">
-                    <img src="/google.png" className="w-[1.2vw] mr-[.5vw]" alt="" />
+                    <img src="/icons/google.png" className="w-[1.2vw] mr-[.5vw]" alt="" />
                     <p className="flex items-center mt-[.2vh]">Google</p>
                   </button>
 
                   <button className="px-[2vw] py-[1vh] flex flex-row justify-center items-center ml-[1vw] border border-[#CCCCCC]/80 bg-[#CCCCCC]/90 transition-colors duration-500 hover:bg-white rounded-full">
-                    <img src="/github.png" className="w-[1.2vw] mr-[.5vw]" alt="" />
+                    <img src="/icons/github.png" className="w-[1.2vw] mr-[.5vw]" alt="" />
                     <p className="flex items-center mt-[.2vh]">GitHub</p>
                   </button>
 
