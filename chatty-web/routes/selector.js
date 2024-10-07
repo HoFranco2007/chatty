@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { createBrowserClient } from "@supabase/ssr"
+const fetch = require('node-fetch');
 
 export const supabaseClient = createBrowserClient(
     "https://segwpauegxdqyfolvqrd.supabase.co",
@@ -60,13 +61,37 @@ router.post('/getData', async (req, res) => {
 
         if (webError) {
             console.error('Error al insertar URL:', webError);
-            return;
+            return res.status(500).json({ message: 'Error checking existing data', error: webError });
         }
 
         console.log('Datos insertados con éxito:', webData);
+        res.json({ message: 'Data received and inserted successfully', webData });
     })
 });
 
+
+router.post('/getDataIa', async (req, res) => {
+    const receivedData = req.body;
+    console.log('Received data:', receivedData);
+
+    try {
+        const response = await fetch('http://localhost:8000/receiveData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(receivedData),
+        });
+
+        const result = await response.json();
+        console.log('Response from FastAPI:', result);
+
+        res.json({ message: 'Data sent to Python server', result });
+    } catch (error) {
+        console.error('Error sending data to FastAPI:', error);
+        res.status(500).json({ message: 'Failed to send data to FastAPI', error });
+    }
+});
 
 
 router.get('/getDataFromDB', async (req, res) => {
