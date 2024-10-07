@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { createBrowserClient } from "@supabase/ssr"
-const fetch = require('node-fetch');
+import fetch from "node-fetch";
 
 export const supabaseClient = createBrowserClient(
     "https://segwpauegxdqyfolvqrd.supabase.co",
@@ -71,8 +71,8 @@ router.post('/getData', async (req, res) => {
 
 
 router.post('/getDataIa', async (req, res) => {
-    const receivedData = req.body;
-    console.log('Received data:', receivedData);
+    const receivedData = req.body; // { html: "<html>...</html>" }
+    console.log('Received HTML:', receivedData.html);
 
     try {
         const response = await fetch('http://localhost:8000/receiveData', {
@@ -80,16 +80,16 @@ router.post('/getDataIa', async (req, res) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(receivedData),
+            body: JSON.stringify({ html: receivedData.html }),
         });
 
         const result = await response.json();
         console.log('Response from FastAPI:', result);
 
-        res.json({ message: 'Data sent to Python server', result });
+        res.json({ message: 'HTML sent to Python server', result });
     } catch (error) {
-        console.error('Error sending data to FastAPI:', error);
-        res.status(500).json({ message: 'Failed to send data to FastAPI', error });
+        console.error('Error sending HTML to FastAPI:', error);
+        res.status(500).json({ message: 'Failed to send HTML to FastAPI', error });
     }
 });
 
