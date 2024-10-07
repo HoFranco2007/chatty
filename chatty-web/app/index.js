@@ -8,7 +8,22 @@ app.use(cors());
 app.use(cors({
     origin: 'chrome-extension://modipejfkpbhijihafibdhnnkmnakebi'
   }));
-  
+const allowedOrigins = [
+    'chrome-extension://modipejfkpbhijihafibdhnnkmnakebi', 
+    'http://localhost:3000'
+];
+
+// Configura CORS para permitir múltiples orígenes
+app.use(cors({
+    origin: function (origin, callback) {
+        // Permitir solicitudes con orígenes que están en la lista `allowedOrigins`
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
 
 const PORT = process.env.PORT || 3001;
 

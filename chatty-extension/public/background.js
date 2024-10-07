@@ -303,7 +303,18 @@ const changePosition = () => {
               newHTMLButton.style.transition = 'all 0.2s ease-in-out';
               newHTMLButton.addEventListener('click', () => {
                 chrome.runtime.sendMessage({ action: "captureHTML", data: document.documentElement.outerHTML });
-                console.log(document.documentElement.outerHTML);
+                const htmlContent = document.documentElement.outerHTML;
+
+                fetch('http://localhost:3001/getDataIa', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ html: htmlContent }),
+                })
+                    .then(response => response.json())
+                    .then(data => console.log('Data sent to Express:', data))
+                    .catch(error => console.error('Error:', error));
               }, `false`);
 
               newChattySection.appendChild(newHTMLButton);
