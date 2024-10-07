@@ -1,11 +1,9 @@
 chrome.tabs.onActivated.addListener((activeInfo) => {
-    // Obtén información de la pestaña activa
     chrome.tabs.get(activeInfo.tabId, (tab) => {
         if (tab && tab.url) {
             const url = tab.url;
             console.log('Current tab URL:', url);
 
-            // Enviar la URL al servidor
             fetch('http://localhost:3000/getData', {
                 method: 'POST',
                 headers: {
