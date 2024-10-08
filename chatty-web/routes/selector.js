@@ -81,7 +81,7 @@ router.post('/getDataIa', async (req, res) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ html: receivedData.html }),
-        });
+        })
 
         const result = await response.json();
         console.log('Response from FastAPI:', result);
@@ -92,7 +92,6 @@ router.post('/getDataIa', async (req, res) => {
         res.status(500).json({ message: 'Failed to send HTML to FastAPI', error });
     }
 });
-
 
 router.get('/getDataFromDB', async (req, res) => {
     try {
