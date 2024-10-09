@@ -64,8 +64,8 @@ const changePosition = () => {
                   <p>¿En qué puedo ayudarte hoy?</p>
                   <div id="chat-messages" style="height: 60vh; margin-bottom: 10px;"></div>
                     <div>
-                      <input id="chat-input" type="text" placeholder="Escribe tu mensaje" />
                       <button id="send-message" >Enviar</button>
+                      <input id="chat-input" type="text" placeholder="Escribe tu mensaje" />
                     </div>
                   </div>
                 </div>  
@@ -209,19 +209,29 @@ const changePosition = () => {
                   }
 
                   #chat-input{
-                    flex: 1; 
-                    padding: 10px; 
+                    padding: .5vh 12vw .5vh .5vw;
+                    padding: 20px; 
                     border: 1px solid #ccc; 
-                    border-radius: 5px;
+                    border-radius: 10px;
+                    height: 6vh;
+                    resize: none;
+                    overflow-wrap: break-word; 
+                    word-wrap: break-word;
+                    word-break: break-word;
+                    overflow: hidden;
+                    width: 18vw;
+                    max-width: 100%;
                   }
 
                   #send-message{
-                    padding: 10px; 
+                    padding: 1vh .8vw 1vh .8vw; 
                     background-color: #85F900; 
                     border: none;
                     border-radius: 5px;
-                    margin-left: 5px; 
+                    margin-left: 13vw;
+                    margin-top: 1vh;
                     cursor: pointer;
+                    position: absolute;
                   }
                 </style>
               `;
