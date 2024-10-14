@@ -249,6 +249,12 @@ const changePosition = () => {
                   chatMessages.appendChild(messageElement);
                   chatInput.value = ''; 
                   chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                  // Guardar el mensaje en el localStorage
+                  const storedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+                  storedMessages.push({ sender: 'user', text: message });
+                  localStorage.setItem('chatMessages', JSON.stringify(storedMessages));
+                  console.log(storedMessages)
                 }
               };
 
