@@ -249,12 +249,6 @@ const changePosition = () => {
                   chatMessages.appendChild(messageElement);
                   chatInput.value = ''; 
                   chatMessages.scrollTop = chatMessages.scrollHeight;
-
-                  // Guardar el mensaje en el localStorage
-                  const storedMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
-                  storedMessages.push({ sender: 'user', text: message });
-                  localStorage.setItem('chatMessages', JSON.stringify(storedMessages));
-                  console.log(storedMessages)
                 }
               };
 
@@ -361,4 +355,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else if (request.action === 'getData') {
       console.log('Received data:', request.data);
   }
+  else if (request.type === "chatMessage") {
+    const userMessage = request.content.toLowerCase();
+    let reply = '';
+
+    if (userMessage.includes('hola')) {
+        reply = '¡Hola! ¿Cómo puedo ayudarte?';
+    } else if (userMessage.includes('adiós')) {
+        reply = '¡Hasta luego! Que tengas un buen día.';
+    } else {
+        reply = 'Lo siento, no entiendo tu mensaje.';
+    }
+
+    sendResponse({ reply });
+}
 });

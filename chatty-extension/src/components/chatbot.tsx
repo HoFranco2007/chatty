@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Message {
     sender: 'user' | 'bot';
@@ -11,23 +11,40 @@ const ChatBot = () => {
     const [positionBottom, setPositionBottom] = useState(0);
     const [positionLeft, setPositionLeft] = useState(0);
 
-    // Recuperar mensajes de localStorage al cargar el componente
-    useState(() => {
-        const savedMessages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-        setMessages(savedMessages);
-        console.log(savedMessages)
-    });
+    useEffect(() => {
+        const sessionId = Date.now().toString();
+        sessionStorage.setItem('chatBotSessionId', sessionId);
+
+        chrome.storage.local.get(['positionBottom', 'positionLeft', 'storedSessionId'], (result) => {
+            if (result.storedSessionId !== sessionId) {
+                setPositionBottom(0);
+                setPositionLeft(0);
+                chrome.storage.local.set({ positionBottom: 0, positionLeft: 0, storedSessionId: sessionId });
+            } else {
+                setPositionBottom(result.positionBottom || 0);
+                setPositionLeft(result.positionLeft || 0);
+            }
+        });
+
+        return () => {
+            sessionStorage.removeItem('chatBotSessionId');
+        };
+    }, []);
+
+    useEffect(() => {
+        const sessionId = sessionStorage.getItem('chatBotSessionId');
+        chrome.storage.local.set({ positionBottom, positionLeft, storedSessionId: sessionId });
+    }, [positionBottom, positionLeft]);
 
     const handleChangePosition = () => {
         if (positionBottom === 0 && positionLeft === 0) {
             setPositionBottom(700);
-            setPositionLeft(1500);
-        } else {
+                setPositionLeft(1500);
+        } else {  
             setPositionBottom(0);
             setPositionLeft(0);
         }
     };
-
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value);
     };
@@ -35,22 +52,12 @@ const ChatBot = () => {
     const handleSendMessage = () => {
         if (input.trim()) {
             const userMessage: Message = { sender: 'user', text: input };
-            const updatedMessages = [...messages, userMessage];
-            setMessages(updatedMessages);
+            setMessages([...messages, userMessage]);
             setInput('');
-
-            // Guardar el mensaje en una nueva clave del localStorage
-            const newMessages = JSON.parse(localStorage.getItem('newChatMessages') || '[]');
-            localStorage.setItem('newChatMessages', JSON.stringify([...newMessages, userMessage]));
 
             setTimeout(() => {
                 const botMessage: Message = { sender: 'bot', text: generateBotResponse(input) };
                 setMessages(prevMessages => [...prevMessages, botMessage]);
-
-                // También guardar el mensaje del bot en la nueva clave del localStorage
-                const updatedNewMessages = JSON.parse(localStorage.getItem('newChatMessages') || '[]');
-                localStorage.setItem('newChatMessages', JSON.stringify([...updatedNewMessages, botMessage]));
-                console.log(botMessage)
             }, 500);
         }
     };
@@ -61,7 +68,7 @@ const ChatBot = () => {
             return "Obvio, para ello debes clickear en el botón resaltado de verde que dice 'Sign Up' en la esquina superior derecha.";
         } else if (userMessage.toLowerCase().includes('sirve')) {
             return "Github es una plataforma de desarrollo colaborativo para alojar proyectos utilizando el sistema de control de versiones Git.";
-        } else if (userMessage.toLowerCase().includes('gracias')) {
+        } else if (userMessage.toLowerCase().includes('gracias')){
             return "De nada, estoy para ayudarte.";
         } else if (userMessage.toLowerCase().includes('usarlo')) {
             return "Lo podes usar para alojar tu código fuente y llevar un control de versiones de tus proyectos.";
