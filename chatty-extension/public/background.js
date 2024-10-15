@@ -1,10 +1,12 @@
+let responseChatbot
+
 const changePosition = () => {
   chrome.storage.local.get(['positionBottom', 'positionLeft'], ({ positionBottom, positionLeft }) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs[0]) {
         chrome.scripting.executeScript({
           target: { tabId: tabs[0].id },
-          func: (positionBottom, positionLeft) => {
+          func: (positionBottom, positionLeft, responseChatbot) => {
             const popupButton = document.getElementById('popup-button');
             const chatty = document.getElementById('chatty-img');
             const htmlButton = document.getElementById('html-button');
@@ -15,14 +17,14 @@ const changePosition = () => {
                 popupButton.style.width = '6vw';  
                 chatty.style.animationPlayState = 'running';
                 chatty.style.animation = 'rotate 0.7s linear';
-              },`false`);
+              }, false);
 
               popupButton.addEventListener('mouseout', () => {
                 popupButton.style.backgroundColor = '#CCCCCC';
-                popupButton.style.width = '5vw'
+                popupButton.style.width = '5vw';
                 chatty.style.animation = 'none';
                 chatty.style.animationPlayState = 'initial';
-              },`false`);
+              }, false);
 
               htmlButton.addEventListener('mouseover', () => {
                 htmlButton.style.backgroundColor = '#85F900';
@@ -32,19 +34,14 @@ const changePosition = () => {
                 htmlButton.style.backgroundColor = '#CCCCCC';
               }, false);
 
-              if (positionLeft > 0){
-                const elements = document.querySelectorAll('*');
+              const elements = document.querySelectorAll('*');
+              const changeSignUpColor = (color) => {
                 elements.forEach(element => {
-                  if (!element.classList.contains('HeaderMenu-link--sign-up' || 'chatty-img')) {
-                    element.style.backgroundColor = '';
-                  } else if (element.className === 'home-campaign-hero') {
-                      element.style.opacity = '0';
-                  } else {
-                        element.style.backgroundColor = '#85F900';
-                        element.style.color = '#000000';
-                    }
-                  }
-                )};
+                  element.style.backgroundColor = color;
+                });
+              };
+    
+
             } else {
               const newChattySection = document.createElement('section');
               const newPopupButton = document.createElement('button');
@@ -64,7 +61,7 @@ const changePosition = () => {
                   <p>¿En qué puedo ayudarte hoy?</p>
                   <div id="chat-messages" style="height: 60vh; margin-bottom: 10px;"></div>
                     <div>
-                      <button id="send-message" >Enviar</button>
+                      <button id="send-message">Enviar</button>
                       <input id="chat-input" type="text" placeholder="Escribe tu mensaje" />
                     </div>
                   </div>
@@ -241,7 +238,7 @@ const changePosition = () => {
                 const chatMessages = document.getElementById('chat-messages');
                 const chatInput = document.getElementById('chat-input');
                 const message = chatInput.value.trim();
-            
+
                 if (message !== '') {
                   const messageElement = document.createElement('div');
                   messageElement.textContent = message;
@@ -249,18 +246,40 @@ const changePosition = () => {
                   chatMessages.appendChild(messageElement);
                   chatInput.value = ''; 
                   chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                  chrome.runtime.sendMessage({ type: "chatMessage", content: message }, (response) => {
+                    if(response.reply.includes('Sign Up')) {
+                      const elements = document.querySelectorAll('*');
+                      elements.forEach(element => {
+                        if (!element.classList.contains('HeaderMenu-link--sign-up')) {
+                          element.style.backgroundColor = '';
+                        } else {
+                          element.style.backgroundColor = '#85F900';
+                        }
+                      })
+
+                    const replyElement = document.createElement('div');
+                    replyElement.textContent = response.reply;
+                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
+                    chatMessages.appendChild(replyElement);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                  }  else {
+                    const replyElement = document.createElement('div');
+                    replyElement.textContent = response.reply;
+                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
+                    chatMessages.appendChild(replyElement);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                  }});
                 }
               };
 
               document.getElementById('send-message').addEventListener('click', sendMessage);
-
               document.getElementById('chat-input').addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                   sendMessage();
-              }
-            });
+                }
+              });
               
-
               newChatty.id = 'chatty-img';
               newChatty.src = chrome.runtime.getURL("/chatty.png");
               newChatty.style.position = 'fixed';
@@ -292,17 +311,17 @@ const changePosition = () => {
               newPopupButton.style.transition = 'all 0.2s ease-in-out';
               newPopupButton.addEventListener('click', () => {
                 sidebar.id = 'custom-sidebar-show';
-              }, `false`);
+              }, false);
               document.querySelector('.cruz').addEventListener('click', () => {
                 sidebar.id = 'custom-sidebar';
-              }, `false`);
+              }, false);
 
               newHTMLButton.appendChild(newHTMLButtonIMG);
               newHTMLButton.id = 'html-button';
               newHTMLButton.style.width = '3.5vw';
               newHTMLButton.style.height = '3.5vw';
               newHTMLButton.style.zIndex = '9999';
-              newHTMLButton.style.display = 'flex'
+              newHTMLButton.style.display = 'flex';
               newHTMLButton.style.justifyContent = 'center';
               newHTMLButton.style.alignItems = 'center';
               newHTMLButton.style.borderRadius = '100vw';
@@ -325,7 +344,7 @@ const changePosition = () => {
                     .then(response => response.json())
                     .then(data => console.log('Data sent to Express:', data))
                     .catch(error => console.error('Error:', error));
-              }, `false`);
+              }, false);
 
               newChattySection.appendChild(newHTMLButton);
               newChattySection.appendChild(newPopupButton);
@@ -350,23 +369,24 @@ const changePosition = () => {
 setInterval(changePosition, 100);
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'captureHTML') {
-      console.log('Captured HTML:', request.data);
-  } else if (request.action === 'getData') {
-      console.log('Received data:', request.data);
-  }
-  else if (request.type === "chatMessage") {
+  if (request.type === "chatMessage") {
     const userMessage = request.content.toLowerCase();
     let reply = '';
 
-    if (userMessage.includes('hola')) {
-        reply = '¡Hola! ¿Cómo puedo ayudarte?';
-    } else if (userMessage.includes('adiós')) {
-        reply = '¡Hasta luego! Que tengas un buen día.';
-    } else {
-        reply = 'Lo siento, no entiendo tu mensaje.';
+    if (userMessage.includes('sign up')) {
+      reply = "Obvio, para ello debes clickear en el botón resaltado de verde que dice 'Sign Up' en la esquina superior derecha.";
+    } else if (userMessage.includes('sirve')) {
+      reply = "Github es una plataforma de desarrollo colaborativo para alojar proyectos utilizando el sistema de control de versiones Git.";
+    } else if (userMessage.includes('gracias')) {
+      reply = 'De nada, estoy para ayudarte.';
+    } else if (userMessage.includes("usarlo")) {
+      reply = "Lo podes usar para alojar tu código fuente y llevar un control de versiones de tus proyectos.";
+    } else if (userMessage.includes('hola')) {
+      reply = "Hola, en que puedo ayudarte?";
+    }else {
+      reply = "Lo siento, no sé cómo responder a eso. ¿Podrías intentar preguntar de otra forma?";
     }
 
     sendResponse({ reply });
-}
+  }
 });
