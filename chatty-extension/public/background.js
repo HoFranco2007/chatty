@@ -298,7 +298,7 @@ const changePosition = () => {
               newPopupButton.appendChild(newChatty); 
               newPopupButton.id = 'popup-button';
               newPopupButton.style.width = '5.5vw';
-              newPopupButton.style.height = '6vh';
+              newPopupButton.style.height = '4vw';
               newPopupButton.style.zIndex = '9999';
               newPopupButton.style.display = 'flex';
               newPopupButton.style.justifyContent = 'center';
