@@ -41,7 +41,7 @@ const ScrollCard: React.FC = () => {
 
     ScrollTrigger.create({
       trigger: cardRef.current,
-      start: "60 center",
+      start: "0 center",
       end: () => `+=${window.innerHeight * (sections - 1.3)}`,
       scrub: true,
       pin: cardRef.current,
@@ -53,7 +53,7 @@ const ScrollCard: React.FC = () => {
 
     ScrollTrigger.create({
       trigger: textRef.current,
-      start: "-170 center",
+      start: "-100 center",
       end: () => `+=${window.innerHeight * (sections - 1.3)}`, 
       scrub: true,
       pin: textRef.current,
@@ -84,7 +84,7 @@ const ScrollCard: React.FC = () => {
         <div className="relative flex flex-row items-end justify-center">
           <div
             ref={cardRef}
-            className="w-[50vw] h-[40vh] p-8 bg-white rounded-lg shadow-lg flex justify-center items-center"
+            className="w-[40vw] h-[40vh] p-8 bg-white rounded-lg shadow-lg flex justify-center items-center"
           >
             <AnimatePresence mode='wait'>
               <motion.div

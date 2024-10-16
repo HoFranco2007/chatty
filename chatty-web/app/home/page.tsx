@@ -5,6 +5,8 @@ import "../globals.css";
 import Card from "@/components/card";
 import SFCAdvantages from "@/components/info";
 import { supabase } from "@/components/navbar/supabase/serverClient";
+import ScrollCard from "@/components/page/cards-scroll";
+import Separator from "@/components/page/separator";
 
 const DiscoverIcon = () => (
   <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -42,8 +44,8 @@ export default async function Home() {
         avatar={avatar}
         logged = {true}
       />
-        <main className="">
-          <section className="flex flex-row justify-center">
+                <main className="">
+          <section className="flex flex-row justify-center mt-[7vh] pb-[10vh]">
             <aside className="flex flex-col justify-between h-[30vw]">
               <div className="flex flex-col">
                 <div>
@@ -60,7 +62,7 @@ export default async function Home() {
               <div>
                 <div className="flex flex-row">
                   <p className="text-[1.5vw]"><span className="-z-10 text-[#85F900] ml-[1vw] font-semibold transition-all duration-500 hover:drop-shadow-[0_1px_2.5px_rgba(133,249,0,1)]">Everything</span><span className="text-[#CCCCCC]"> in a simple extension</span><span className="text-[#CCCCCC]"> - </span></p>
-                  <button className="flex flex-row ml-[0.5vw] px-[0.5vw] py-[0.2vw] border border-[#F580F1] rounded-lg hover:border-white transition-colors duration-500"><p className="text-[#CCCCCC] text-[1.4vw] transition-all duration-500 hover:drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">Add to chrome</p><img src="/chrome.png" className="W-[2vw] h-[2vw] ml-[0.5vw]" /></button>
+                  <a href="https://github.com/" target="blank"><button className="flex flex-row ml-[0.5vw] px-[0.5vw] py-[0.2vw] border border-[#F580F1] rounded-lg hover:border-white transition-colors duration-500"><p className="text-[#CCCCCC] text-[1.4vw] transition-all duration-500 hover:drop-shadow-[0_1px_3px_rgba(255,255,255,1)]">Add to chrome</p><img src="/icons/chrome.png" className="W-[2vw] h-[2vw] ml-[0.5vw]" /></button></a>
                 </div>
               </div>
             </aside>
@@ -69,31 +71,11 @@ export default async function Home() {
             </aside>
           </section>
         </main>
-        <div className="flex flex-row mt-10">
-          <Card
-          title="Descubre Información Oculta"
-          description="Deja que nuestra IA explore la web por ti, encontrando datos valiosos que podrían haberte pasado por alto. Haz que la información trabaje a tu favor."
-          linkText="Descubre Más"
-          linkUrl="/home"
-          icon={<DiscoverIcon />}
-          />
-          <Card
-            title="Toma Decisiones Más Inteligentes"
-            description="Convierte los datos en decisiones. Nuestra IA te ofrece análisis detallados para que tomes decisiones más informadas y estratégicas."
-            linkText="Comienza Ahora"
-            linkUrl="/home"
-            icon={<DecisionIcon />}
-          />
-          <Card
-            title="Ahorra Tiempo y Recursos"
-            description="Automatiza la recopilación y análisis de datos, ahorrando tiempo y recursos valiosos. Enfócate en lo que realmente importa, nosotros nos encargamos del resto."
-            linkText="Optimiza Ahora"
-            linkUrl="/home"
-            icon={<TimeIcon />}
-          />
-      </div>
-      <section className="flex items-center justify-cente flex-col mt-10">
-        <SFCAdvantages />
+        <div className="flex flex-row mt-[12vh]">
+          <ScrollCard />
+        </div>
+      <section className="flex items-center justify-center mb-[12vh] mt-[12vh]">
+        <Separator   />
       </section>
         <footer className="flex justify-center w-[100vw]">
           <Footer />

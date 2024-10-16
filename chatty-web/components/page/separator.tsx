@@ -43,14 +43,14 @@ const Separator: React.FC = () => {
 
   return (
     <div className="flex flex-row items-center justify-around bg-[#1A0034] py-12 overflow-hidden w-[100vw] border-t border-[#CCCCCC] border-b">
-      <h2 className="text-white text-[2.5vw] text-start font-extralight  p-2 mb-8 mx-[10vw]">
+      <h2 className="text-white text-[2.5vw] text-start font-extralight p-2 mb-8 mx-[10vw]">
         Whatever webpage you are interested. We got you covered.
       </h2>
       <div className="flex flex-col">
-        <div className="my-[2vh]">
+        <div className="my-[2vh] ml-8">
           <Carrousel />
         </div>
-        <div className="my-[2vh]">
+        <div className="my-[2vh] ml-8">
           <Carrousel />
         </div>
       </div>

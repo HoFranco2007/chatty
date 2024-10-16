@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { createBrowserClient } from "@supabase/ssr"
 import fetch from "node-fetch";
+import { GoogleGenerativeAI } from '@google/generative-ai';
+
+const genAI = new GoogleGenerativeAI("AIzaSyAKbYTexLdi4TRsyuXZZ0nNOiY3Pz0RNiQ");
 
 export const supabaseClient = createBrowserClient(
     "https://segwpauegxdqyfolvqrd.supabase.co",
@@ -69,29 +72,32 @@ router.post('/getData', async (req, res) => {
     })
 });
 
-
 router.post('/getDataIa', async (req, res) => {
-    const receivedData = req.body; // { html: "<html>...</html>" }
-    console.log('Received HTML:', receivedData.html);
+    const { message } = req.body;
+    console.log('Received message:', message);
 
     try {
-        const response = await fetch('http://localhost:8000/receiveData', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ html: receivedData.html }),
-        })
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const result = await model.generateContent([message]);
+        const responseText = result.response.text();
+        console.log(responseText);
 
-        const result = await response.json();
-        console.log('Response from FastAPI:', result);
+        // Limpiar caracteres especiales
+        const cleanedResponse = responseText.replace(/[*#]/g, '');
 
-        res.json({ message: 'HTML sent to Python server', result });
+        // Limitar a un máximo de 5 renglones
+        const maxLines = 5;
+        const lines = cleanedResponse.split('\n'); // Dividir la respuesta en renglones
+        const limitedResponse = lines.slice(0, maxLines).join('\n'); // Tomar solo los primeros 5 renglones
+
+        // Devuelve la respuesta generada
+        res.json({ response: limitedResponse });
     } catch (error) {
-        console.error('Error sending HTML to FastAPI:', error);
-        res.status(500).json({ message: 'Failed to send HTML to FastAPI', error });
+        console.error('Error generating content:', error);
+        res.status(500).json({ error: 'Error generating content' });
     }
 });
+
 
 router.get('/getDataFromDB', async (req, res) => {
     try {

@@ -32,7 +32,7 @@ export default async function SignUp() {
 
           <aside className="col-span-1 flex justify-center items-center">
 
-            <div className="bg-[#0e0e0e] w-[40vw] h-[69vh] mr-[12vw] flex flex-col justify-center px-[2vw] py-[1vh] rounded">
+            <div className="bg-[#0e0e0e] w-[40vw] h-[84vh] mr-[12vw] flex flex-col justify-center px-[2vw] py-[1vh] rounded">
               
               <div>
                 <h1 className="text-[1.65vw] text-white">Create an Account</h1>

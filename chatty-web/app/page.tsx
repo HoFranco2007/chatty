@@ -67,12 +67,8 @@ export default async function Home() {
         <div className="flex flex-row mt-[12vh]">
           <ScrollCards />
         </div>
-      <section className="flex items-center justify-center mb-[12vh]">
+      <section className="flex items-center justify-center mb-[12vh] mt-[12vh]">
         <Separator />
-      </section>
-      <section className="text-white h-[100vh] w-[100vw]">
-        <h1>Navigate with confidence</h1>
-        <h3>With chatty you will never get lost in a web page again.</h3>
       </section>
         <footer className="flex justify-center w-[100vw]">
           <Footer />
