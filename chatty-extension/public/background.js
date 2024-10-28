@@ -216,7 +216,7 @@ const changePosition = () => {
                     word-wrap: break-word;
                     word-break: break-word;
                     overflow: hidden;
-                    width: 18vw;
+                    width: 14vw;
                     max-width: 100%;
                   }
 
@@ -225,7 +225,7 @@ const changePosition = () => {
                     background-color: #85F900; 
                     border: none;
                     border-radius: 5px;
-                    margin-left: 13vw;
+                    margin-left: 10vw;
                     margin-top: 1vh;
                     cursor: pointer;
                     position: absolute;
@@ -239,6 +239,28 @@ const changePosition = () => {
                 const chatInput = document.getElementById('chat-input');
                 const message = chatInput.value.trim();
 
+                /* fetch('http://localhost:3001/getDataIa', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ message: message }),
+              })
+              .then(response => response.json())
+              .then(data => {
+                  console.log('Data received from Express:', data);
+      
+                  // Mostrar la respuesta del modelo de Gemin
+
+                  const replyElement = document.createElement('div');
+                  replyElement.textContent = data.response; // Usa data.response para acceder a la respuesta generada
+                  replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
+                  chatMessages.appendChild(replyElement);
+                  chatMessages.scrollTop = chatMessages.scrollHeight;
+              })
+              .catch(error => console.error('Error:', error));
+               */
+
                 if (message !== '') {
                   const messageElement = document.createElement('div');
                   messageElement.textContent = message;
@@ -251,13 +273,13 @@ const changePosition = () => {
                     if(response.reply.includes('Sign Up')) {
                       const elements = document.querySelectorAll('*');
                       elements.forEach(element => {
-                        if (!element.classList.contains('HeaderMenu-link--sign-up')) {
-                          element.style.backgroundColor = '';
-                        } else {
+                        if (element.classList.contains('HeaderMenu-link--sign-up' || "yt-spec-button-shape-next  yt-spec-button-shape-next--icon-leading yt-spec-button-shape-next--enable-backdrop-filter-experiment")) {
                           element.style.backgroundColor = '#85F900';
+                        } else {
+                          element.style.backgroundColor = '';
                         }
                       })
-
+                      
                     const replyElement = document.createElement('div');
                     replyElement.textContent = response.reply;
                     replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
@@ -284,7 +306,7 @@ const changePosition = () => {
               newChatty.src = chrome.runtime.getURL("/chatty.png");
               newChatty.style.position = 'fixed';
               newChatty.style.width = '3vw';
-              newChatty.style.height = '3vh';
+              newChatty.style.height = '2vw';
               newChatty.style.zIndex = '9999';
               newChatty.style.opacity = '1'; 
               newChatty.style.animationPlayState = 'paused';
@@ -298,7 +320,7 @@ const changePosition = () => {
               newPopupButton.appendChild(newChatty); 
               newPopupButton.id = 'popup-button';
               newPopupButton.style.width = '5.5vw';
-              newPopupButton.style.height = '4vw';
+              newPopupButton.style.height = '3.5vw';
               newPopupButton.style.zIndex = '9999';
               newPopupButton.style.display = 'flex';
               newPopupButton.style.justifyContent = 'center';
@@ -368,18 +390,18 @@ const changePosition = () => {
 
 setInterval(changePosition, 100);
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+/* chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === "chatMessage") {
     const userMessage = request.content.toLowerCase();
     let reply = '';
 
-    if (userMessage.includes('sign up')) {
+    if (userMessage.includes('sesion')) {
       reply = "Obvio, para ello debes clickear en el botón resaltado de verde que dice 'Sign Up' en la esquina superior derecha.";
     } else if (userMessage.includes('sirve')) {
       reply = "Github es una plataforma de desarrollo colaborativo para alojar proyectos utilizando el sistema de control de versiones Git.";
     } else if (userMessage.includes('gracias')) {
       reply = 'De nada, estoy para ayudarte.';
-    } else if (userMessage.includes("usarlo")) {
+    } else if (userMessage.includes("usa")) {
       reply = "Lo podes usar para alojar tu código fuente y llevar un control de versiones de tus proyectos.";
     } else if (userMessage.includes('hola')) {
       reply = "Hola, en que puedo ayudarte?";
@@ -388,5 +410,36 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 
     sendResponse({ reply });
+  }
+}); */
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.type === "chatMessage") {
+    const userMessage = request.content.toLowerCase();
+
+    if (userMessage.includes('sesion')) {
+      const reply = "Obvio, para ello debes clickear en el botón resaltado de verde que dice 'Sign Up' en la esquina superior derecha.";
+      sendResponse({ reply });
+    } else {
+      // Aquí llamamos a la API de Gemini
+      fetch('http://localhost:3001/getDataIa', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: request.content }), // Enviamos el mensaje del usuario a la API
+      })
+      .then(response => response.json())
+      .then(data => {
+        sendResponse({ reply: data.response }); // Devolvemos la respuesta de Gemini
+      })
+      .catch(error => {
+        console.error('Error al llamar a la API de Gemini:', error);
+        sendResponse({ reply: "Lo siento, ocurrió un error al procesar tu solicitud." });
+      });
+
+      // Necesitamos retornar true para indicar que la respuesta se enviará de forma asíncrona
+      return true;
+    }
   }
 });
