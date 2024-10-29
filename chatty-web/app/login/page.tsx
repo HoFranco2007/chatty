@@ -34,7 +34,7 @@ export default async function LogIn() {
 
           <aside className="col-span-1 flex justify-center items-center">
 
-            <div className="bg-[#0e0e0e] w-[40vw] h-[81vh] mr-[12vw] flex flex-col py-[3vh] px-[2vw] rounded">
+            <div className="bg-[#0e0e0e] w-[40vw] h-[69vh] mr-[12vw] flex flex-col py-[3vh] px-[2vw] rounded">
               
               <div>
                 <h1 className="text-[1.65vw] text-white mt-4">Log into your Account</h1>

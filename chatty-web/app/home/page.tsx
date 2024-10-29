@@ -50,12 +50,12 @@ export default async function Home() {
               <div className="flex flex-col">
                 <div>
                   <h1 className="text-[4.5vw] font-bold text-[#CCCCCC]/95 ml-[1vw] mt-[3vw] w-[45vw]">
-                    The solution for all your web problems.
+                    Setup your web experience
                   </h1>
                 </div>
                 <div className="">
                   <h1 className="text-[2.5vw] text-[#c600d4bb] ml-[1vw] transition-all duration-500">
-                    First and unique web helper
+                    Just how you like it to be
                   </h1>
                 </div>
               </div>
