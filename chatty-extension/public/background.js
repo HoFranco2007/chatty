@@ -355,6 +355,7 @@ const changePosition = () => {
               newHTMLButton.addEventListener('click', () => {
                 chrome.runtime.sendMessage({ action: "captureHTML", data: document.documentElement.outerHTML });
                 const htmlContent = document.documentElement.outerHTML;
+                const url = document.documentURI;
 
                 fetch('http://localhost:3001/getDataIa', {
                     method: 'POST',
@@ -427,11 +428,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: request.content }), // Enviamos el mensaje del usuario a la API
+        body: JSON.stringify({ message: request.content }),
       })
       .then(response => response.json())
       .then(data => {
-        sendResponse({ reply: data.response }); // Devolvemos la respuesta de Gemini
+        sendResponse({ reply: data.response });
       })
       .catch(error => {
         console.error('Error al llamar a la API de Gemini:', error);

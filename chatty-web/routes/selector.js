@@ -8,6 +8,8 @@ const genAI = new GoogleGenerativeAI("AIzaSyAKbYTexLdi4TRsyuXZZ0nNOiY3Pz0RNiQ");
 export const supabaseClient = createBrowserClient(
     "https://segwpauegxdqyfolvqrd.supabase.co",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlZ3dwYXVlZ3hkcXlmb2x2cXJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYyMjQxMzQsImV4cCI6MjAzMTgwMDEzNH0.8V-VAfb2983I8RkqEPHc5t7YyxbbBFbbjZb2eCnEGRE")
+
+
 const router = Router();
 
 router.get('/data', (req, res) => {
@@ -77,20 +79,20 @@ router.post('/getDataIa', async (req, res) => {
     console.log('Received message:', message);
 
     try {
+        if (message.includes("como")){
+            
+        }
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-        const result = await model.generateContent([message]);
+        const result = await model.generateContent([`Responde en español: ${message}`]);
         const responseText = result.response.text();
-        console.log(responseText);
 
-        // Limpiar caracteres especiales
         const cleanedResponse = responseText.replace(/[*#]/g, '');
 
-        // Limitar a un máximo de 5 renglones
         const maxLines = 5;
-        const lines = cleanedResponse.split('\n'); // Dividir la respuesta en renglones
-        const limitedResponse = lines.slice(0, maxLines).join('\n'); // Tomar solo los primeros 5 renglones
+        const lines = cleanedResponse.split('\n');
+        const limitedResponse = lines.slice(0, maxLines).join('\n');
 
-        // Devuelve la respuesta generada
+
         res.json({ response: limitedResponse });
     } catch (error) {
         console.error('Error generating content:', error);
