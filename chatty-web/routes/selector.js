@@ -80,7 +80,24 @@ router.post('/getDataIa', async (req, res) => {
 
     try {
         if (message.includes("como")){
-            
+            const response = await fetch('http://localhost:8000/accion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message })  // Enviamos el mensaje al servidor Python
+            });
+
+            // Verificamos si la respuesta es exitosa
+            if (!response.ok) {
+                throw new Error('Error al hacer la petición al servidor Python');
+            }
+
+            // Obtenemos la respuesta del servidor Python
+            const pythonResponse = await response.json();
+
+            // Enviamos la respuesta de Python al cliente
+            return res.json({ response: pythonResponse.response });
         }
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
         const result = await model.generateContent([`Responde en español: ${message}`]);
