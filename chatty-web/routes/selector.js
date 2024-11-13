@@ -117,6 +117,37 @@ router.post('/getDataIa', async (req, res) => {
     }
 });
 
+router.post("/getHtml", async (req, res) => {
+    const { html } = req.body;  // Recibe el HTML desde la extensión
+  
+    console.log('HTML recibido:', html);  // Puedes ver el HTML en la consola para verificar
+  
+    try {
+      // Enviamos el HTML al servidor Python
+      const response = await fetch('http://localhost:8000/analizar_html', {  // Asegúrate de que esta URL sea correcta
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ html })  // Enviamos el HTML para su análisis
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al hacer la petición al servidor Python');
+      }
+  
+      const pythonResponse = await response.json();  // La respuesta del servidor Python
+  
+      console.log('Respuesta del servidor Python:', pythonResponse);
+  
+      // Devolvemos la respuesta al cliente (la extensión)
+      res.status(200).json({ message: 'HTML enviado al servidor Python con éxito', pythonResponse });
+    } catch (error) {
+      console.error('Error al enviar HTML al servidor Python:', error);
+      res.status(500).json({ message: 'Error al enviar HTML al servidor Python', error });
+    }
+  });
+
 
 router.get('/getDataFromDB', async (req, res) => {
     try {

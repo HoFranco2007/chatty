@@ -355,9 +355,8 @@ const changePosition = () => {
               newHTMLButton.addEventListener('click', () => {
                 chrome.runtime.sendMessage({ action: "captureHTML", data: document.documentElement.outerHTML });
                 const htmlContent = document.documentElement.outerHTML;
-                const url = document.documentURI;
 
-                fetch('http://localhost:3001/getDataIa', {
+                fetch('http://localhost:3001/getHtml', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
