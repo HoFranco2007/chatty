@@ -79,26 +79,23 @@ router.post('/getDataIa', async (req, res) => {
     console.log('Received message:', message);
 
     try {
-        if (message.includes("como")){
+        /* if (message.includes("como")){
             const response = await fetch('http://localhost:8000/accion', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ message })  // Enviamos el mensaje al servidor Python
+                body: JSON.stringify({ message })
             });
 
-            // Verificamos si la respuesta es exitosa
             if (!response.ok) {
                 throw new Error('Error al hacer la petición al servidor Python');
             }
 
-            // Obtenemos la respuesta del servidor Python
             const pythonResponse = await response.json();
 
-            // Enviamos la respuesta de Python al cliente
             return res.json({ response: pythonResponse.response });
-        }
+        } */
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
         const result = await model.generateContent([`Responde en español: ${message}`]);
         const responseText = result.response.text();
@@ -118,30 +115,28 @@ router.post('/getDataIa', async (req, res) => {
 });
 
 router.post("/getHtml", async (req, res) => {
-    const { html } = req.body;  // Recibe el HTML desde la extensión
+    const { html } = req.body;
   
-    console.log('HTML recibido:', html);  // Puedes ver el HTML en la consola para verificar
+    console.log('HTML recibido:', html);
   
     try {
-      // Enviamos el HTML al servidor Python
-      const response = await fetch('http://localhost:8000/analizar_html', {  // Asegúrate de que esta URL sea correcta
+      const response = await fetch('http://localhost:8000/analizar_html', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ html })  // Enviamos el HTML para su análisis
+        body: JSON.stringify({ html })
       });
   
       if (!response.ok) {
         throw new Error('Error al hacer la petición al servidor Python');
       }
   
-      const pythonResponse = await response.json();  // La respuesta del servidor Python
-  
+      const pythonResponse = await response.json();
+
       console.log('Respuesta del servidor Python:', pythonResponse);
   
-      // Devolvemos la respuesta al cliente (la extensión)
-      res.status(200).json({ message: 'HTML enviado al servidor Python con éxito', pythonResponse });
+      res.status(200).json({ message: pythonResponse });
     } catch (error) {
       console.error('Error al enviar HTML al servidor Python:', error);
       res.status(500).json({ message: 'Error al enviar HTML al servidor Python', error });
