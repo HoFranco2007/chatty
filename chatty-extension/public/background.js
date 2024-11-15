@@ -364,7 +364,22 @@ const changePosition = () => {
                     body: JSON.stringify({ html: htmlContent }),
                 })
                     .then(response => response.json())
-                    .then(data => console.log('Data sent to Express:', data))
+                    .then(data => {
+                      let selector = data.message.response;
+                      console.log(selector)
+                      selector = selector.split(' ')[0];
+                      console.log(selector)
+                
+                      // Cambiar el fondo del elemento que coincida con el selector
+                      if (selector) {
+                        const elements = document.querySelectorAll(`.${selector}`);
+                        elements.forEach(element => {
+                          element.style.backgroundColor = '#85F900';
+                        });
+                      }
+
+                      console.log('Elemento modificado:', selector);
+                    })
                     .catch(error => console.error('Error:', error));
               }, false);
 
@@ -421,7 +436,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       const reply = "Obvio, para ello debes clickear en el botón resaltado de verde que dice 'Sign Up' en la esquina superior derecha.";
       sendResponse({ reply });
     } else {
-      // Aquí llamamos a la API de Gemini
       fetch('http://localhost:3001/getDataIa', {
         method: 'POST',
         headers: {
