@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import Link from 'next/link';
 
 type LogoutModalProps = {
   isOpen: boolean;
@@ -43,12 +44,14 @@ export const LogoutModal = ({ isOpen, onConfirm, onClose }: LogoutModalProps) =>
         >
           No
         </button>
-        <button
-          onClick={onConfirm}
-          className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
-        >
-          Sí
-        </button>
+        <Link href="/">
+          <button
+            onClick={onConfirm}
+            className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
+          >
+            Sí
+          </button>
+        </Link>
       </div>
     </Modal>
   );
