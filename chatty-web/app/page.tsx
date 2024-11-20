@@ -1,28 +1,8 @@
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer/footer"
 import "./globals.css";
-import SFCAdvantages from "@/components/info";
 import ScrollCards from "@/components/page/cards-scroll";
 import Separator from "@/components/page/separator";
-
-
-const DiscoverIcon = () => (
-  <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M8 16l4-4m0 0l4-4m-4 4l-4-4m4 4l4 4" />
-  </svg>
-);
-
-const DecisionIcon = () => (
-  <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-  </svg>
-);
-
-const TimeIcon = () => (
-  <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-5a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-);
 
 export default async function Home() {
 
