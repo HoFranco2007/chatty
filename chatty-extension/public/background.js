@@ -79,6 +79,7 @@ const changePosition = () => {
                     z-index: 9999;
                     font-family: Arial, sans-serif;
                     transition: all 0.3s ease-in-out;
+                    color: #000000;
                   }
 
                   .cruz {
@@ -174,11 +175,13 @@ const changePosition = () => {
                     padding: 20px;
                     font-size: 22px;
                     margin: 0;
+                    color: #000000;
                   }
 
                   #custom-sidebar-show p {
                     padding: 0 20px;
                     font-size: 16px;
+                    color: #000000;
                   }
 
                   #custom-sidebar-show ul {
@@ -207,13 +210,15 @@ const changePosition = () => {
                   }
 
                   #chat-input{
-                    padding: .5vh 12vw .5vh .5vw;
-                    padding: 20px; 
+                    padding: 2vh; 
                     border: 1px solid #ccc; 
                     border-radius: 10px;
-                    height: 2vh;
+                    height: 4vh;
                     overflow: hidden;
                     width: 12vw;
+                    background-color: #f0f0f0;
+                    height: 6vh;
+                    color: #000000;
                   }
 
                   #send-message{
@@ -224,6 +229,7 @@ const changePosition = () => {
                     margin-left: .5vw;
                     height: 6vh;
                     cursor: pointer;
+                    color: #000000;
                   }
 
                   #enviar-mensajes{
@@ -266,7 +272,7 @@ const changePosition = () => {
                 if (message !== '') {
                   const messageElement = document.createElement('div');
                   messageElement.textContent = message;
-                  messageElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #f0f0f0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: right; width: auto; max-width: 100%; display: flex; justify-content: right;';
+                  messageElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #f0f0f0; color: #000000; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: right; width: auto; max-width: 100%; display: flex; justify-content: right;';
                   chatMessages.appendChild(messageElement);
                   chatInput.value = ''; 
                   chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -284,13 +290,13 @@ const changePosition = () => {
                       
                     const replyElement = document.createElement('div');
                     replyElement.textContent = response.reply;
-                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
+                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; color: #000000; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
                     chatMessages.appendChild(replyElement);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                   }  else {
                     const replyElement = document.createElement('div');
                     replyElement.textContent = response.reply;
-                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
+                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; color: #000000; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
                     chatMessages.appendChild(replyElement);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                   }});
@@ -372,7 +378,6 @@ const changePosition = () => {
                       selector = selector.split(' ')[0];
                       console.log(selector)
                 
-                      // Cambiar el fondo del elemento que coincida con el selector
                       if (selector) {
                         const elements = document.querySelectorAll(`.${selector}`);
                         elements.forEach(element => {

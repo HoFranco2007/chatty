@@ -102,7 +102,7 @@ router.post('/getDataIa', async (req, res) => {
 
         const cleanedResponse = responseText.replace(/[*#]/g, '');
 
-        const maxLines = 5;
+        const maxLines = 3;
         const lines = cleanedResponse.split('\n');
         const limitedResponse = lines.slice(0, maxLines).join('\n');
 
