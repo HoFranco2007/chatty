@@ -52,21 +52,21 @@ const changePosition = () => {
               const sidebar = document.createElement('div');
               sidebar.id = 'custom-sidebar'; 
               sidebar.innerHTML = `
-              <aside id="sidebar">
-                <aside>
+              <section>
+                <div>
                   <button class="cruz"><img src="https://cdn-icons-png.flaticon.com/512/64/64498.png"/></button>
-                </aside>
-                <aside class="chatbot">
+                </div>
+                <div class="chatbot">
                   <h2>Hola,</h2>
                   <p>¿En qué puedo ayudarte hoy?</p>
-                  <aside id="chat-messages" style="height: 60vh; margin-bottom: 10px;"></aside>
-                    <aside id="enviar-mensajes">
-                      <input id="chat-input" type="text" placeholder="Escribe tu mensaje" />
+                  <div id="chat-messages" style="height: 60vh; margin-bottom: 10px;"></div>
+                    <div>
                       <button id="send-message">Enviar</button>
-                    </aside>
-                  </aside>
-                </aside>  
-              </aside>  
+                      <input id="chat-input" type="text" placeholder="Escribe tu mensaje" />
+                    </div>
+                  </div>
+                </div>  
+              </section>  
                 <style>
                   #custom-sidebar {
                     position: fixed;
@@ -79,7 +79,6 @@ const changePosition = () => {
                     z-index: 9999;
                     font-family: Arial, sans-serif;
                     transition: all 0.3s ease-in-out;
-                    color: #000000;
                   }
 
                   .cruz {
@@ -140,7 +139,7 @@ const changePosition = () => {
                     transition: all 0.3s ease-in-out;
                   }
 
-                  #custom-sidebar #sidebar {
+                  #custom-sidebar section {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
@@ -149,7 +148,7 @@ const changePosition = () => {
                     transition: all 0.3s ease-in-out;
                   }
 
-                  #custom-sidebar-show #sidebar {
+                  #custom-sidebar-show section {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
@@ -175,13 +174,11 @@ const changePosition = () => {
                     padding: 20px;
                     font-size: 22px;
                     margin: 0;
-                    color: #000000;
                   }
 
                   #custom-sidebar-show p {
                     padding: 0 20px;
                     font-size: 16px;
-                    color: #000000;
                   }
 
                   #custom-sidebar-show ul {
@@ -206,37 +203,32 @@ const changePosition = () => {
                     justify-content: start;
                     align-items: end;
                     transition: all 0.3s ease-in-out;
-                    padding: 0 20px 0 20px
                   }
 
                   #chat-input{
-                    padding: 2vh; 
+                    padding: .5vh 12vw .5vh .5vw;
+                    padding: 20px; 
                     border: 1px solid #ccc; 
                     border-radius: 10px;
-                    height: 4vh;
-                    overflow: hidden;
-                    width: 12vw;
-                    background-color: #f0f0f0;
                     height: 6vh;
-                    color: #000000;
+                    resize: none;
+                    overflow-wrap: break-word; 
+                    word-wrap: break-word;
+                    word-break: break-word;
+                    overflow: hidden;
+                    width: 14vw;
+                    max-width: 100%;
                   }
 
                   #send-message{
                     padding: 1vh .8vw 1vh .8vw; 
                     background-color: #85F900; 
                     border: none;
-                    border-radius: 10px;
-                    margin-left: .5vw;
-                    height: 6vh;
+                    border-radius: 5px;
+                    margin-left: 10vw;
+                    margin-top: 1vh;
                     cursor: pointer;
-                    color: #000000;
-                  }
-
-                  #enviar-mensajes{
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
+                    position: absolute;
                   }
                 </style>
               `;
@@ -272,7 +264,7 @@ const changePosition = () => {
                 if (message !== '') {
                   const messageElement = document.createElement('div');
                   messageElement.textContent = message;
-                  messageElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #f0f0f0; color: #000000; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: right; width: auto; max-width: 100%; display: flex; justify-content: right;';
+                  messageElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #f0f0f0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: right; width: auto; max-width: 100%; display: flex; justify-content: right;';
                   chatMessages.appendChild(messageElement);
                   chatInput.value = ''; 
                   chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -290,13 +282,13 @@ const changePosition = () => {
                       
                     const replyElement = document.createElement('div');
                     replyElement.textContent = response.reply;
-                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; color: #000000; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
+                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
                     chatMessages.appendChild(replyElement);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                   }  else {
                     const replyElement = document.createElement('div');
                     replyElement.textContent = response.reply;
-                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; color: #000000; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
+                    replyElement.style.cssText = 'transition: all 0.3s ease-in-out; background-color: #d0f0d0; padding: 10px; margin: 5px 0; border-radius: 5px; text-align: left; width: auto; max-width: 100%; display: flex; justify-content: left;';
                     chatMessages.appendChild(replyElement);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                   }});
@@ -373,15 +365,16 @@ const changePosition = () => {
                 })
                     .then(response => response.json())
                     .then(data => {
-                      let selector = data.message.response;
+                      let selector = data.content;
                       console.log(selector)
-                      selector = selector.split(' ')[0];
+                      selector = selector.split(", ")[0];
                       console.log(selector)
-                
+
                       if (selector) {
                         const elements = document.querySelectorAll(`.${selector}`);
                         elements.forEach(element => {
-                          element.style.backgroundColor = '#85F900';
+                          element.style.backgroundColor = 'rgba(138, 43, 226, 1)';
+
                         });
                       }
 
