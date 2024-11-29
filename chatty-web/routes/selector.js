@@ -102,7 +102,7 @@ router.post('/getDataIa', async (req, res) => {
 
         const cleanedResponse = responseText.replace(/[*#]/g, '');
 
-        const maxLines = 3;
+        const maxLines = 5;
         const lines = cleanedResponse.split('\n');
         const limitedResponse = lines.slice(0, maxLines).join('\n');
 
@@ -116,32 +116,100 @@ router.post('/getDataIa', async (req, res) => {
 
 router.post("/getHtml", async (req, res) => {
     const { html } = req.body;
-  
-    console.log('HTML recibido:', html);
-  
-    try {
-      const response = await fetch('http://localhost:8000/analizar_html', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ html })
-      });
-  
-      if (!response.ok) {
-        throw new Error('Error al hacer la petición al servidor Python');
-      }
-  
-      const pythonResponse = await response.json();
 
-      console.log('Respuesta del servidor Python:', pythonResponse);
-  
-      res.status(200).json({ message: pythonResponse });
+    console.log('HTML recibido:', html);
+
+    try {
+        const { data, error } = await supabaseClient
+            .from("webs")
+            .select("content_id")
+            .eq("url", "https://github.com/");
+
+        if (error) {
+            console.error("Error al obtener content_id:", error);
+            return res.status(500).json({ message: "Error al obtener content_id" });
+        }
+
+        const content_id = data[0]?.content_id;
+        if (!content_id) {
+            return res.status(404).json({ message: "No se encontró content_id" });
+        }
+
+        console.log(content_id);
+
+        // Obtener la información relacionada con el content_id
+        const { data: dataWeb, error: errorWeb } = await supabaseClient
+            .from("content")
+            .select("content_analized, index")
+            .eq("id", content_id);
+
+        if (errorWeb) {
+            console.error("Error al obtener datos de content:", errorWeb);
+            return res.status(500).json({ message: "Error al obtener datos de content" });
+        }
+
+        if (!dataWeb || dataWeb.length === 0) {
+            return res.status(404).json({ message: "No se encontró contenido analizado" });
+        }
+
+        let content_analized = dataWeb[0].content_analized.split(", ");
+        let index = dataWeb[0].index;
+
+        console.log("Contenido analizado:", content_analized);
+        console.log("Índice actual:", index);
+
+        // Lógica para actualizar el índice y retornar el contenido correspondiente
+        if (index === 0) {
+            index += 1;
+            console.log("Nuevo índice:", index);
+
+            const { data: dataIndex, error: errorIndex } = await supabaseClient
+                .from("content")
+                .update({ index })
+                .eq("id", content_id);
+
+            if (errorIndex) {
+                console.error("Error al actualizar el índice:", errorIndex);
+                return res.status(500).json({ message: "Error al actualizar el índice" });
+            }
+
+            console.log("Índice actualizado:", dataIndex);
+            return res.status(200).json({ content: content_analized[0] });
+        } else if (index === 1) {
+            index += 1;
+            const { data: dataIndex, error: errorIndex } = await supabaseClient
+                .from("content")
+                .update({ index })
+                .eq("id", content_id);
+
+            if (errorIndex) {
+                console.error("Error al actualizar el índice:", errorIndex);
+                return res.status(500).json({ message: "Error al actualizar el índice" });
+            }
+
+            console.log("Índice actualizado:", dataIndex);
+            return res.status(200).json({ content: content_analized[1] });
+        } else {
+            index = 0;
+            const { data: dataIndex, error: errorIndex } = await supabaseClient
+                .from("content")
+                .update({ index })
+                .eq("id", content_id);
+
+            if (errorIndex) {
+                console.error("Error al actualizar el índice:", errorIndex);
+                return res.status(500).json({ message: "Error al actualizar el índice" });
+            }
+
+            console.log("Índice actualizado:", dataIndex);
+            return res.status(200).json({ content: content_analized[2] });
+        }
+
     } catch (error) {
-      console.error('Error al enviar HTML al servidor Python:', error);
-      res.status(500).json({ message: 'Error al enviar HTML al servidor Python', error });
+        console.error('Error al enviar HTML al servidor Python:', error);
+        return res.status(500).json({ message: 'Error al enviar HTML al servidor Python', error });
     }
-  });
+});
 
 
 router.get('/getDataFromDB', async (req, res) => {
