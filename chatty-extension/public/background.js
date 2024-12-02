@@ -52,21 +52,21 @@ const changePosition = () => {
               const sidebar = document.createElement('div');
               sidebar.id = 'custom-sidebar'; 
               sidebar.innerHTML = `
-              <section>
-                <div>
+               <aside id="sidebar">
+                <aside>
                   <button class="cruz"><img src="https://cdn-icons-png.flaticon.com/512/64/64498.png"/></button>
-                </div>
-                <div class="chatbot">
+                </aside>
+                <aside class="chatbot">
                   <h2>Hola,</h2>
                   <p>¿En qué puedo ayudarte hoy?</p>
-                  <div id="chat-messages" style="height: 60vh; margin-bottom: 10px;"></div>
-                    <div>
-                      <button id="send-message">Enviar</button>
+                  <aside id="chat-messages" style="height: 60vh; margin-bottom: 10px;"></aside>
+                    <aside id="enviar-mensajes">
                       <input id="chat-input" type="text" placeholder="Escribe tu mensaje" />
-                    </div>
-                  </div>
-                </div>  
-              </section>  
+                      <button id="send-message">Enviar</button>
+                    </aside>
+                  </aside>
+                </aside>  
+              </aside>  
                 <style>
                   #custom-sidebar {
                     position: fixed;
@@ -79,6 +79,7 @@ const changePosition = () => {
                     z-index: 9999;
                     font-family: Arial, sans-serif;
                     transition: all 0.3s ease-in-out;
+                    color: #000000;
                   }
 
                   .cruz {
@@ -139,7 +140,7 @@ const changePosition = () => {
                     transition: all 0.3s ease-in-out;
                   }
 
-                  #custom-sidebar section {
+                  #custom-sidebar #sidebar {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
@@ -148,7 +149,7 @@ const changePosition = () => {
                     transition: all 0.3s ease-in-out;
                   }
 
-                  #custom-sidebar-show section {
+                  #custom-sidebar-show #sidebar {
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
@@ -174,11 +175,13 @@ const changePosition = () => {
                     padding: 20px;
                     font-size: 22px;
                     margin: 0;
+                    color: #000000;
                   }
 
                   #custom-sidebar-show p {
                     padding: 0 20px;
                     font-size: 16px;
+                    color: #000000;
                   }
 
                   #custom-sidebar-show ul {
@@ -203,32 +206,37 @@ const changePosition = () => {
                     justify-content: start;
                     align-items: end;
                     transition: all 0.3s ease-in-out;
+                    padding: 0 20px 0 20px
                   }
 
                   #chat-input{
-                    padding: .5vh 12vw .5vh .5vw;
-                    padding: 20px; 
+                    padding: 2vh; 
                     border: 1px solid #ccc; 
                     border-radius: 10px;
-                    height: 6vh;
-                    resize: none;
-                    overflow-wrap: break-word; 
-                    word-wrap: break-word;
-                    word-break: break-word;
+                    height: 4vh;
                     overflow: hidden;
-                    width: 14vw;
-                    max-width: 100%;
+                    width: 12vw;
+                    background-color: #f0f0f0;
+                    height: 6vh;
+                    color: #000000;
                   }
 
                   #send-message{
                     padding: 1vh .8vw 1vh .8vw; 
                     background-color: #85F900; 
                     border: none;
-                    border-radius: 5px;
-                    margin-left: 10vw;
-                    margin-top: 1vh;
+                    border-radius: 10px;
+                    margin-left: .5vw;
+                    height: 6vh;
                     cursor: pointer;
-                    position: absolute;
+                    color: #000000;
+                  }
+
+                  #enviar-mensajes{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
                   }
                 </style>
               `;
