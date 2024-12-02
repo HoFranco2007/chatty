@@ -355,33 +355,64 @@ const changePosition = () => {
               newHTMLButton.addEventListener('click', () => {
                 chrome.runtime.sendMessage({ action: "captureHTML", data: document.documentElement.outerHTML });
                 const htmlContent = document.documentElement.outerHTML;
+                let url = window.location.href;
+                console.log(url)
 
-                fetch('http://localhost:3001/getHtml', {
-                    method: 'POST',
+                if(url == "https://campus.ort.edu.ar/" || url == "https://campus.ort.edu.ar/secundaria/belgrano/" || url == "https://campus.ort.edu.ar/secundaria/belgrano/tic/2024-nr5b"){
+                  fetch("http://localhost:3001/getHtmlCampus", {
+                    method: "POST",
                     headers: {
-                        'Content-Type': 'application/json',
+                      'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ html: htmlContent }),
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                      let selector = data.content;
-                      console.log(selector)
-                      selector = selector.split(", ")[0];
-                      console.log(selector)
+                    body: JSON.stringify({html: htmlContent})
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    let selector = data.content;
+                    console.log(selector)
+                    selector = selector.split(", ")[0];
+                    console.log(selector)
 
-                      if (selector) {
-                        const elements = document.querySelectorAll(`.${selector}`);
-                        elements.forEach(element => {
-                          element.style.backgroundColor = 'rgba(138, 43, 226, 1)';
+                    if (selector) {
+                      const elements = document.querySelectorAll(`.${selector}`);
+                      elements.forEach(element => {
+                        element.style.backgroundColor = 'rgba(138, 43, 226, 1)';
 
-                        });
-                      }
+                      });
+                    }
 
-                      console.log('Elemento modificado:', selector);
-                    })
-                    .catch(error => console.error('Error:', error));
+                    console.log('Elemento modificado:', selector);
+                  })
+                  .catch(error => console.error('Error:', error));
+                } else{
+                  fetch('http://localhost:3001/getHtml', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ html: htmlContent }),
+                  })
+                      .then(response => response.json())
+                      .then(data => {
+                        let selector = data.content;
+                        console.log(selector)
+                        selector = selector.split(", ")[0];
+                        console.log(selector)
+  
+                        if (selector) {
+                          const elements = document.querySelectorAll(`.${selector}`);
+                          elements.forEach(element => {
+                            element.style.backgroundColor = 'rgba(138, 43, 226, 1)';
+  
+                          });
+                        }
+  
+                        console.log('Elemento modificado:', selector);
+                      })
+                      .catch(error => console.error('Error:', error));
+                }
               }, false);
+
 
               newChattySection.appendChild(newHTMLButton);
               newChattySection.appendChild(newPopupButton);
